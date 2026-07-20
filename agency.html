@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Для ивент-агентств — Generation Yoga для бизнеса</title>
+  <meta name="description" content="Готовый wow-модуль для корпоративов: привозим оборудование, преподавателей и сценарий. Каталог форматов и условия для агентств. Санкт-Петербург.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <style>
+    /* AG hero — деловой: без фонового фото, максимум смысла на экран */
+    .ag-hero { background: var(--marine); color: var(--paper); padding-block: clamp(56px, 9vh, 120px); }
+    .ag-hero h1 { font-size: clamp(2.2rem, 1.4rem + 2.8vw, 3.5rem); max-width: 16ch; }
+    .ag-hero h1 em { color: var(--orange); }
+    .ag-hero h1 .keep { white-space: nowrap; } /* «wow-модуль» не рвём переносом */
+    .ag-hero .lede { color: rgba(246,241,232,.84); margin-top: 22px; }
+    .ag-hero .split { align-items: end; gap: clamp(32px, 5vw, 64px); }
+
+    /* каталог-палитра */
+    .catalog { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .cat-col { background: var(--paper); padding: clamp(24px, 3vw, 34px); }
+    .cat-col h3 { font-size: var(--step-1); font-family: var(--font-ui); font-weight: 700; letter-spacing: -0.01em; }
+    .cat-col .eyebrow { margin-bottom: 12px; }
+    .cat-col ul { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
+    .cat-col li { font-size: var(--step--1); padding-left: 18px; position: relative; color: #46433d; }
+    .cat-col li::before { content: "—"; position: absolute; left: 0; color: var(--orange); }
+    @media (max-width: 860px) { .catalog { grid-template-columns: 1fr; } }
+
+    /* условия */
+    .terms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .term { border-top: 2px solid var(--orange); padding-top: 18px; }
+    .term h4 { font-family: var(--font-ui); font-weight: 700; font-size: var(--step-1); margin-bottom: 8px; }
+    .term p { font-size: var(--step--1); color: #46433d; }
+    .on-ink .term p { color: rgba(246,241,232,.78); }
+    @media (max-width: 860px) { .terms { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="site-header" data-page="agency">
+    <div class="wrap header-row">
+      <a class="brand" href="index.html"><b>GY</b><span>для бизнеса</span></a>
+      <nav class="aud-nav" aria-label="Аудитории">
+        <a href="hr.html">Команде</a>
+        <a href="pr.html">Гостям</a>
+        <a href="agency.html" aria-current="page">Агентствам</a>
+        <a class="btn header-cta" href="#zayavka" data-cta="header:agency">Запросить условия</a>
+      </nav>
+      <button class="burger" aria-label="Меню" aria-expanded="false">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M0 1h18M0 6h18M0 11h18" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="ag-hero hero">
+      <div class="wrap split">
+        <div>
+          <span class="eyebrow">Для ивент-агентств</span>
+          <h1 class="mt-s">Готовый <em class="keep">wow-модуль</em> для ваших корпоративов</h1>
+          <p class="lede">Вставляете нас в свой проект как яркий блок — привозим оборудование, преподавателей и сценарий. Минимум хлопот вашему менеджеру.</p>
+          <div class="cta-row mt-l">
+            <a class="btn" href="#zayavka" data-cta="hero:agency">Запросить условия для агентств <span class="arw">→</span></a>
+          </div>
+        </div>
+        <div>
+          <div class="horizon" style="margin-bottom: 28px"></div>
+          <div class="facts" style="grid-template-columns: 1fr 1fr; gap: 26px 20px">
+            <div class="fact"><div class="k">2013</div><div class="v">работаем с корпоративными заказчиками</div></div>
+            <div class="fact"><div class="k">350</div><div class="v">гостей на одном событии</div></div>
+            <div class="fact"><div class="k">под ключ</div><div class="v">оборудование, ведущие, сценарий — наши</div></div>
+            <div class="fact"><div class="k">СПб</div><div class="v">Петербург и область, выезд по запросу</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ПОЧЕМУ С НАМИ -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head is-observe reveal">
+          <span class="eyebrow">Почему с нами агентству</span>
+          <h2>Один подрядчик — закрытый блок программы</h2>
+        </div>
+        <div class="reasons is-observe reveal">
+          <div class="reason"><span class="idx">01</span><div><h4>Под ключ</h4><p>Всё своё: оборудование, специалисты, сценарий. От вас — только площадка и участники.</p></div></div>
+          <div class="reason"><span class="idx">02</span><div><h4>Гибкость</h4><p>Блок, программа или событие под ключ — встраиваемся в любой проект.</p></div></div>
+          <div class="reason"><span class="idx">03</span><div><h4>Дифференциация</h4><p>Форматы, которых нет у обычных подрядчиков, — продаёте клиенту дороже.</p></div></div>
+          <div class="reason"><span class="idx">04</span><div><h4>Wow-визуал = контент</h4><p>Фотогеничные форматы для отчёта клиенту и вашего портфолио.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- КАТАЛОГ -->
+    <section class="section on-paper-2">
+      <div class="wrap">
+        <div class="section-head is-observe reveal">
+          <span class="eyebrow">Каталог форматов</span>
+          <h2>Палитра, из которой собирается предложение клиенту</h2>
+        </div>
+        <div class="catalog is-observe reveal">
+          <div class="cat-col">
+            <span class="eyebrow eyebrow--plain">HR-форматы</span>
+            <h3>Забота о команде</h3>
+            <ul>
+              <li>День заботы — корпоративный день восстановления, от 65 000 ₽</li>
+              <li>Регулярность — абонемент практик, от 35 000 ₽/мес</li>
+              <li>Ретрит / Digital Detox — 1–2 дня перезагрузки на выезде</li>
+              <li>9 концепций дня: антистресс, впечатления, объединение</li>
+            </ul>
+          </div>
+          <div class="cat-col">
+            <span class="eyebrow eyebrow--plain">PR-форматы</span>
+            <h3>События для гостей</h3>
+            <ul>
+              <li>PR-интеграция — практика внутри конференции или форума</li>
+              <li>PR-событие под ключ — мероприятие под концепцию клиента</li>
+              <li>Кемпы и йога-туры — выездные события с проживанием</li>
+            </ul>
+          </div>
+          <div class="cat-col">
+            <span class="eyebrow eyebrow--plain">Локации</span>
+            <h3>Необычные площадки</h3>
+            <ul>
+              <li>SUP-йога на воде</li>
+              <li>Звукотерапия: гонги и поющие чаши</li>
+              <li>Оранжерея, планетарий</li>
+              <li>Практика при свечах, под видеопроекцией</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cta-row mt-l is-observe reveal">
+          <a class="link-arw" href="#magnit" data-cta="catalog:pdf">Скачать каталог с условиями (PDF)</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- УСЛОВИЯ РАБОТЫ -->
+    <section class="section on-ink" data-track-view="pricing">
+      <div class="wrap">
+        <div class="section-head is-observe reveal">
+          <span class="eyebrow">Условия работы</span>
+          <h2>Как устроено партнёрство</h2>
+        </div>
+        <div class="terms is-observe reveal">
+          <div class="term">
+            <h4>Комиссия</h4>
+            <p><span class="tbd">% — на согласовании</span> До утверждения — обсуждаем индивидуально под объём и регулярность проектов.</p>
+          </div>
+          <div class="term">
+            <h4>Прайс-лист</h4>
+            <p>Присылаем по запросу отдельным файлом — удобно пересылать внутри агентства.</p>
+          </div>
+          <div class="term">
+            <h4>Работа под вашим брендом</h4>
+            <p><span class="tbd">white label — решается</span> Уточните в заявке, если это принципиально для проекта.</p>
+          </div>
+        </div>
+
+        <div class="steps is-observe reveal mt-l" style="margin-top: clamp(44px, 6vw, 72px)">
+          <div class="step"><h4>Запрос</h4><p>Присылаете вводные: задача клиента, дата, площадка, бюджет.</p></div>
+          <div class="step"><h4>Расчёт</h4><p>Возвращаем формат и смету — в виде, который можно показать клиенту.</p></div>
+          <div class="step"><h4>Согласование</h4><p>Ваш менеджер согласует с клиентом. Общаемся так, как удобно агентству.</p></div>
+          <div class="step"><h4>Проведение</h4><p>Приезжаем со всем своим и проводим. Вы получаете отчётный визуал.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ЛИД-МАГНИТЫ -->
+    <section class="section" id="magnit">
+      <div class="wrap">
+        <form class="leadmag is-observe reveal" data-stub="agency-magnet">
+          <div>
+            <span class="eyebrow">Для партнёров · бесплатно</span>
+            <h3 class="mt-s">Каталог форматов и условия для партнёров (PDF)</h3>
+            <p style="color:#56524a">Что предложить клиенту и на каких условиях — один файл, который можно переслать внутри агентства.</p>
+          </div>
+          <div class="form-fields">
+            <div class="mini-form">
+              <input type="text" name="contact" placeholder="Почта или Telegram" aria-label="Почта или Telegram" required>
+              <button class="btn" type="submit" data-cta="magnet:agency">Получить каталог</button>
+            </div>
+            <p class="form-note">Пришлём сразу, без звонков.</p>
+          </div>
+          <div class="form-ok">Каталог отправлен — проверьте почту или Telegram. <span class="pill-note">(демо-режим прототипа)</span></div>
+        </form>
+
+        <div class="leadmag is-observe reveal" data-delay="1" style="margin-top: 18px; background: var(--marine); color: var(--paper); border-color: transparent">
+          <div>
+            <span class="eyebrow" style="color: rgba(246,241,232,.66)">Смотрины подрядчика</span>
+            <h3 class="mt-s">Приходите на наше открытое событие</h3>
+            <p style="opacity:.82">Посмотрите формат вживую до того, как предлагать его клиенту. Пришлём пригласительный на ближайшую дату.</p>
+          </div>
+          <div>
+            <a class="btn" href="#zayavka" data-cta="magnet:invite">Получить пригласительный <span class="arw">→</span></a>
+            <p class="form-note mt-s" style="color: rgba(246,241,232,.6)">Ближайшая дата: <span class="tbd">уточняется</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section on-paper-2">
+      <div class="wrap--narrow">
+        <div class="section-head is-observe reveal" style="margin-bottom: 32px">
+          <span class="eyebrow">Частые вопросы</span>
+          <h2>Что спрашивают менеджеры агентств</h2>
+        </div>
+        <div class="faq is-observe reveal">
+          <details>
+            <summary>Как устроена комиссия?</summary>
+            <div class="ans"><span class="tbd">условия — на согласовании</span> До утверждения обсуждаем индивидуально: размер зависит от объёма и регулярности проектов.</div>
+          </details>
+          <details>
+            <summary>Кто общается с клиентом?</summary>
+            <div class="ans">Гибко, как удобно агентству. Можем остаться полностью за кадром или подключиться к встрече как ваш подрядчик.</div>
+          </details>
+          <details>
+            <summary>Можно провести под нашим брендом (white label)?</summary>
+            <div class="ans"><span class="tbd">решается</span> Вопрос обсуждаем индивидуально — укажите в заявке, если это принципиально для проекта.</div>
+          </details>
+          <details>
+            <summary>Сколько нужно времени на подготовку?</summary>
+            <div class="ans"><span class="tbd">срок — уточняется</span> Зависит от формата и площадки: блок в готовую программу собираем быстрее, событие под ключ — дольше.</div>
+          </details>
+          <details>
+            <summary>Какая география?</summary>
+            <div class="ans">Санкт-Петербург и область. Выезд в другие города — по запросу.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ЗАЯВКА -->
+    <section class="section on-ink" id="zayavka">
+      <div class="wrap--narrow">
+        <div class="is-observe reveal" style="text-align: center; margin-bottom: 36px">
+          <h2 style="font-size: var(--step-3)">Напишите про ваш проект — <em>соберём предложение</em></h2>
+          <p class="lede mt-m" style="margin-inline: auto; color: rgba(246,241,232,.75)">Или запросите каталог форматов с условиями — пришлём файлом, без звонков.</p>
+        </div>
+        <form class="is-observe reveal" data-stub="agency-lead" novalidate>
+          <div class="form-fields">
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Как вас зовут</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="Имя" required>
+              </div>
+              <div class="field">
+                <label for="agency">Агентство</label>
+                <input id="agency" name="agency" type="text" autocomplete="organization" placeholder="Название" required>
+              </div>
+              <div class="field">
+                <label for="contact">Удобный канал связи</label>
+                <input id="contact" name="contact" type="text" placeholder="Telegram, почта или телефон" required>
+              </div>
+              <div class="field">
+                <label for="project">Проект</label>
+                <input id="project" name="project" type="text" placeholder="Дата, число гостей, задача клиента">
+              </div>
+            </div>
+            <input type="hidden" data-track="utm_source" name="utm_source">
+            <input type="hidden" data-track="utm_campaign" name="utm_campaign">
+            <input type="hidden" data-track="id" name="ref_id">
+            <div class="cta-row" style="margin-top: 24px; justify-content: space-between">
+              <button class="btn" type="submit" data-cta="form:agency-lead">Отправить запрос <span class="arw">→</span></button>
+              <span class="form-note">Свяжемся в течение рабочего дня.</span>
+            </div>
+          </div>
+          <div class="form-ok">
+            <h3 class="serif" style="font-size: var(--step-2)">Запрос отправлен</h3>
+            <p class="mt-s" style="opacity:.85">Спасибо! Свяжемся в течение рабочего дня и пришлём расчёт в виде, который можно показать клиенту. <span class="pill-note">(демо-режим прототипа)</span></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <a class="brand" href="index.html" style="color: var(--paper)"><b>GY</b><span style="color: rgba(246,241,232,.6)">для бизнеса</span></a>
+        <nav class="footer-nav" aria-label="Направления">
+          <a href="hr.html">Забота о команде</a>
+          <a href="pr.html">Событие для гостей</a>
+          <a href="agency.html">Для агентств</a>
+          <a href="https://generation.yoga">generation.yoga</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>Generation Yoga · корпоративное направление · Санкт-Петербург</span>
+        <span>Йога и телесные практики для бизнеса, с 2013 года</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

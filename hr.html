@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Забота о команде — Generation Yoga для бизнеса</title>
+  <meta name="description" content="Корпоратив, после которого команде лучше, а не тяжелее. Йога и практики восстановления для сотрудников — в офисе, на выезде или регулярно. От 65 000 ₽.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <style>
+    /* HR hero — уникальный первый экран страницы */
+    /* Сетка на уровне секции: текст выровнен по колонке контента,
+       фото уходит в правый край вьюпорта без поля. */
+    .hr-hero { background: var(--ink); color: var(--paper); display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+    .hr-hero-copy {
+      padding-block: clamp(48px, 8vh, 110px);
+      padding-left: max(var(--gutter), (100vw - var(--wrap)) / 2);
+      padding-right: clamp(24px, 4vw, 64px);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .hr-hero-copy h1 { font-size: clamp(2.3rem, 1.3rem + 3.4vw, 4.1rem); }
+    .hr-hero-copy h1 em { color: var(--orange); }
+    .hr-hero-copy .lede { color: rgba(246,241,232,.8); margin-top: 22px; }
+    .hr-hero-media { position: relative; }
+    .hr-hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    @media (max-width: 900px) {
+      .hr-hero { grid-template-columns: 1fr; }
+      .hr-hero-copy { padding-inline: var(--gutter); }
+      .hr-hero-media { height: 56vw; min-height: 240px; }
+      .hr-hero-media img { position: static; }
+    }
+    /* демо-полоса */
+    .demo-band { background: var(--orange); color: #fff; }
+    .demo-band .inner { display: grid; grid-template-columns: 1.5fr auto; gap: 28px; align-items: center; }
+    .demo-band h2 { font-size: var(--step-2); color: #fff; }
+    .demo-band p { max-width: 52ch; margin-top: 8px; color: rgba(255,255,255,.9); }
+    .demo-band .btn { background: var(--ink); color: var(--paper); }
+    .demo-band .btn:hover { background: #000; box-shadow: 0 12px 30px -14px rgba(0,0,0,.6); }
+    @media (max-width: 720px) { .demo-band .inner { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="site-header" data-hero-dark data-page="hr">
+    <div class="wrap header-row">
+      <a class="brand" href="index.html"><b>GY</b><span>для бизнеса</span></a>
+      <nav class="aud-nav" aria-label="Аудитории">
+        <a href="hr.html" aria-current="page">Команде</a>
+        <a href="pr.html">Гостям</a>
+        <a href="agency.html">Агентствам</a>
+        <a class="btn header-cta" href="#zayavka" data-cta="header:hr">Подобрать формат</a>
+      </nav>
+      <button class="burger" aria-label="Меню" aria-expanded="false">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M0 1h18M0 6h18M0 11h18" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hr-hero hero">
+        <div class="hr-hero-copy">
+          <span class="eyebrow">Забота о команде · для HR</span>
+          <h1 class="mt-s">Корпоратив, после которого команде <em>лучше</em>, а не тяжелее</h1>
+          <p class="lede mt-m">Йога и практики восстановления для ваших сотрудников — в офисе, на выезде или регулярно.</p>
+          <div class="cta-row mt-l">
+            <a class="btn" href="#zayavka" data-cta="hero:hr">Подобрать формат для команды <span class="arw">→</span></a>
+            <a class="link-arw" href="#demo" data-cta="hero:demo">или начните с бесплатной демо</a>
+          </div>
+        </div>
+        <div class="hr-hero-media">
+          <img src="assets/img/yoga-embankment.jpg" alt="Команда на йога-практике на набережной у залива">
+        </div>
+    </section>
+
+    <!-- ДЕМО (главное действие для холодного трафика) -->
+    <section class="section--tight demo-band" id="demo">
+      <div class="wrap inner">
+        <div>
+          <h2>Начните с бесплатной демо-практики</h2>
+          <p>Проведём 30-минутную практику для вашей команды — в офисе, без подготовки с вашей стороны. Вы увидите реакцию людей до того, как планировать бюджет.</p>
+        </div>
+        <a class="btn" href="#zayavka" data-cta="band:demo">Запланировать демо <span class="arw">→</span></a>
+      </div>
+    </section>
+
+    <!-- БОЛЬ + ЦИФРЫ -->
+    <section class="section on-marine">
+      <div class="wrap is-observe reveal">
+        <span class="eyebrow">Скрытая статья расходов</span>
+        <div class="stat-row mt-l">
+          <div class="stat">
+            <div class="num"><em>71%</em></div>
+            <p class="cap">работающих россиян сталкивались с выгоранием — за год показатель вырос с 58%.</p>
+            <span class="src">Опрос SuperJob, июнь 2026</span>
+          </div>
+          <div class="stat">
+            <div class="num"><em>2–6</em> окладов</div>
+            <p class="cap">во столько обходится компании замена одного сотрудника с учётом подбора, обучения и адаптации.</p>
+            <span class="src">Оценка рынка труда, 2026</span>
+          </div>
+        </div>
+        <div class="horizon mt-l"></div>
+        <p class="lede mt-l" style="max-width: 60ch">Выгорание — уже не HR-абстракция, а измеримая статья расходов: текучесть, больничные, падение вовлечённости. <em class="serif">Один удержанный специалист окупает годовую программу заботы о команде.</em></p>
+      </div>
+    </section>
+
+    <!-- ЧТО ПРЕДЛАГАЕМ -->
+    <section class="section" id="formaty" data-track-view="pricing">
+      <div class="wrap">
+        <div class="section-head is-observe reveal">
+          <span class="eyebrow">Что предлагаем</span>
+          <h2>Три способа позаботиться о&nbsp;команде</h2>
+        </div>
+        <div class="cards cards--3 is-observe reveal">
+          <article class="card">
+            <span class="tag">Ядро</span>
+            <h3>День заботы</h3>
+            <div class="price">от 65 000 ₽</div>
+            <p>Корпоративный день восстановления и сплочения — в вашем офисе или на площадке, команда до 30 человек.</p>
+            <span class="fine">Больше 30 человек — подберём площадку и нескольких ведущих.</span>
+          </article>
+          <article class="card">
+            <span class="tag">Ядро</span>
+            <h3>Регулярность</h3>
+            <div class="price">от 35 000 ₽<small> / мес · 4 практики</small></div>
+            <p>Цикл «8 граней йоги»: каждую неделю новое направление — от динамичной хатхи до глубокого расслабления в нидре. Команда пробует всё и находит своё. Группа до 15 человек, в вашем офисе.</p>
+            <span class="fine">Подбор внешней площадки — отдельно.</span>
+          </article>
+          <article class="card card--anchor">
+            <span class="tag">Витрина · по запросу</span>
+            <h3>Ретрит / Digital Detox</h3>
+            <div class="price" style="color: var(--paper)">по запросу</div>
+            <p>1–2 дня перезагрузки на выезде. Вариант для топ-команды — стратсессия в тишине, без гаджетов.</p>
+            <span class="fine" style="color: rgba(246,241,232,.6)">Собираем под задачу и состав.</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- КОНЦЕПЦИИ ДНЯ ЗАБОТЫ -->
+    <section class="section on-paper-2">
+      <div class="wrap">
+        <div class="section-head is-observe reveal">
+          <span class="eyebrow">Концепции «Дня заботы»</span>
+          <h2>Меню — по задаче, которую нужно решить</h2>
+        </div>
+
+        <div class="is-observe reveal">
+          <div class="concept-group">
+            <div class="concept-head">
+              <span class="glyph">🌿</span>
+              <div>
+                <h3>Антистресс и восстановление</h3>
+                <span class="lead">Снять напряжение, вернуть ресурс</span>
+              </div>
+            </div>
+            <div class="concept-list">
+              <div class="concept"><b>Перезагрузка</b><span>Команда выдыхает за один день</span></div>
+              <div class="concept"><b>Устойчивость</b><span>Команда, которую не ломает нагрузка</span></div>
+              <div class="concept"><b>Тихий час</b><span>Пауза, которая возвращает в строй</span></div>
+            </div>
+          </div>
+
+          <div class="concept-group">
+            <div class="concept-head">
+              <span class="glyph">✨</span>
+              <div>
+                <h3>Яркие впечатления</h3>
+                <span class="lead">Удивить, запомниться, получить эмоцию</span>
+              </div>
+            </div>
+            <div class="concept-list">
+              <div class="concept"><b>День тишины в городе</b><span>Остров покоя посреди делового сезона</span></div>
+              <div class="concept"><b>Стихии / сезонный день</b><span>Корпоратив, который хочется выложить в ленту</span></div>
+              <div class="concept"><b>8 граней</b><span>Каждый найдёт свою практику</span></div>
+            </div>
+          </div>
+
+          <div class="concept-group">
+            <div class="concept-head">
+              <span class="glyph">🤝</span>
+              <div>
+                <h3>Объединение</h3>
+                <span class="lead">Сплотить команду, почувствовать единство</span>
+              </div>
+            </div>
+            <div class="concept-list">
+              <div class="concept"><b>В одном ритме</b><span>Синхронная практика: вместе двигаемся и дышим</span></div>
+              <div class="concept"><b>Ecstatic Dance</b><span>Единство через свободное движение</span></div>
+              <div class="concept"><b>Круг</b><span>Момент, когда команда чувствует себя целым</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ПОЧЕМУ ЭТО ЛУЧШЕ КЛАССИКИ -->
+    <section class="section on-ink">
+      <div class="wrap">
+        <div class="section-head is-observe reveal">
+          <span class="eyebrow">Почему это лучше классики</span>
+          <h2>Не банкет, не верёвочный курс, не квест</h2>
+        </div>
+        <div class="reasons is-observe reveal">
+          <div class="reason"><span class="idx">01</span><div><h4>Восстанавливает, а не изматывает</h4><p>После нашего дня команда с ресурсом, а не «отлёживается» наутро.</p></div></div>
+          <div class="reason"><span class="idx">02</span><div><h4>Объединяет через состояние</h4><p>Не через соревнование: нет «проигравших», комфортно интровертам.</p></div></div>
+          <div class="reason"><span class="idx">03</span><div><h4>Даёт навык на будущее</h4><p>Сотрудник уносит техники саморегуляции, а не только фото.</p></div></div>
+          <div class="reason"><span class="idx">04</span><div><h4>Инклюзивно</h4><p>Комфортно всем в команде — без неловкости и обязательного участия.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ПОЧЕМУ МЫ + ПРИНЦИП БЕЗОПАСНОСТИ -->
+    <section class="section">
+      <div class="wrap split">
+        <div class="is-observe reveal">
+          <span class="eyebrow">Почему мы</span>
+          <h2 class="mt-s" style="font-size: var(--step-3)">Организацию берём на себя</h2>
+          <div class="reasons" style="grid-template-columns: 1fr; margin-top: 24px">
+            <div class="reason"><span class="idx">·</span><div><h4>Думаем о людях</h4><p>Программа под уровень и состав, никого не ставим в неловкое положение.</p></div></div>
+            <div class="reason"><span class="idx">·</span><div><h4>Адаптируем под команду</h4><p>Подберём формат и ведущего под вашу задачу.</p></div></div>
+            <div class="reason"><span class="idx">·</span><div><h4>Под ключ</h4><p>Оборудование, ведущие, сценарий — всё привозим и организуем сами.</p></div></div>
+          </div>
+        </div>
+        <aside class="is-observe reveal" data-delay="1">
+          <div class="leadmag" style="background: var(--marine); color: var(--paper); border-color: transparent">
+            <div style="grid-column: 1 / -1">
+              <span class="eyebrow" style="color: rgba(246,241,232,.66)">Принцип безопасности форматов</span>
+              <p class="lede mt-m" style="max-width: none">Всё, что мы предлагаем компании, проходит тест: <em class="serif">комфортно ли это самому стеснительному и консервативному человеку в команде.</em></p>
+              <p class="mt-m" style="opacity: .82">Парные и контактные практики в корпоративных форматах не используем.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- НАМ ДОВЕРЯЮТ -->
+    <section class="section--tight section on-marine">
+      <div class="wrap is-observe reveal">
+        <span class="eyebrow">Нам доверяют</span>
+        <div class="facts mt-l">
+          <div class="fact"><div class="k">2013</div><div class="v">год начала — опыт больше 10 лет</div></div>
+          <div class="fact"><div class="k">350</div><div class="v">человек на одном событии — потянем любой масштаб</div></div>
+          <div class="fact"><div class="k">5–350</div><div class="v">размер группы — от камерной до большой</div></div>
+          <div class="fact"><div class="k">СПб</div><div class="v">статусные площадки Петербурга и области</div></div>
+        </div>
+        <p class="form-note mt-m" style="color: rgba(246,241,232,.55)">Кейсы — обезличенно до согласования; логотипы и имена клиентов — после подтверждения.</p>
+      </div>
+    </section>
+
+    <!-- КАК ЭТО РАБОТАЕТ -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head is-observe reveal">
+          <span class="eyebrow">Как это работает</span>
+          <h2>От заявки до практики — четыре шага</h2>
+        </div>
+        <div class="steps is-observe reveal">
+          <div class="step"><h4>Заявка</h4><p>Оставляете заявку или бронируете бесплатную демо. Отвечаем в течение рабочего дня.</p></div>
+          <div class="step"><h4>Подбор</h4><p>Уточняем задачу, состав и площадку — предлагаем формат и считаем стоимость.</p></div>
+          <div class="step"><h4>Подготовка</h4><p>Берём организацию на себя: ведущие, оборудование, сценарий, тайминг.</p></div>
+          <div class="step"><h4>Практика</h4><p>Проводим день заботы. Команда возвращается с ресурсом — и с техниками на будущее.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section on-paper-2">
+      <div class="wrap--narrow">
+        <div class="section-head is-observe reveal" style="margin-bottom: 32px">
+          <span class="eyebrow">Частые вопросы</span>
+          <h2>Что обычно спрашивает HR</h2>
+        </div>
+        <div class="faq is-observe reveal">
+          <details>
+            <summary>Нужна ли подготовка от участников?</summary>
+            <div class="ans">Нет. Приходят в обычной офисной одежде, коврики и всё оборудование привозим мы. Для практик в офисе достаточно переговорки или свободной зоны.</div>
+          </details>
+          <details>
+            <summary>А если часть команды скептически настроена?</summary>
+            <div class="ans">Это нормально и ожидаемо. Программы построены так, что комфортно даже самому консервативному человеку: без «эзотерики», без обязательного участия, без неловких моментов. Скептики обычно уходят самыми довольными.</div>
+          </details>
+          <details>
+            <summary>Какой минимальный и максимальный размер группы?</summary>
+            <div class="ans">От 5 до 350 человек. Под большие группы подбираем площадку и нескольких ведущих.</div>
+          </details>
+          <details>
+            <summary>Можно ли провести в нашем офисе?</summary>
+            <div class="ans">Да, это самый частый формат. Приезжаем со всем своим, вам ничего не нужно готовить.</div>
+          </details>
+          <details>
+            <summary>Как понять, что это подойдёт именно нашей команде?</summary>
+            <div class="ans">Начните с бесплатной демо-практики на 30 минут — увидите реакцию людей до каких-либо решений о бюджете.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ЗАЯВКА -->
+    <section class="section on-ink" id="zayavka">
+      <div class="wrap--narrow">
+        <div class="is-observe reveal" style="text-align: center; margin-bottom: 36px">
+          <div class="deadline" style="margin-bottom: 24px">
+            <span class="dot"></span>
+            Сентябрь — лучшее окно для дня заботы: команда возвращается из отпусков. Слоты бронируем до 15 августа.
+          </div>
+          <h2 style="font-size: var(--step-3)">Оставьте заявку — подберём формат <em>под вашу команду</em> и рассчитаем стоимость</h2>
+        </div>
+
+        <form class="is-observe reveal" data-stub="hr-lead" novalidate>
+          <div class="form-fields">
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Как вас зовут</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="Имя" required>
+              </div>
+              <div class="field">
+                <label for="company">Компания</label>
+                <input id="company" name="company" type="text" autocomplete="organization" placeholder="Название" required>
+              </div>
+              <div class="field">
+                <label for="contact">Удобный канал связи</label>
+                <input id="contact" name="contact" type="text" placeholder="Telegram, почта или телефон" required>
+              </div>
+              <div class="field">
+                <label for="size">Размер команды</label>
+                <input id="size" name="size" type="text" inputmode="numeric" placeholder="Примерно, человек">
+              </div>
+            </div>
+            <input type="hidden" data-track="utm_source" name="utm_source">
+            <input type="hidden" data-track="utm_campaign" name="utm_campaign">
+            <input type="hidden" data-track="id" name="ref_id">
+            <div class="cta-row" style="margin-top: 24px; justify-content: space-between">
+              <button class="btn" type="submit" data-cta="form:hr-lead">Отправить заявку <span class="arw">→</span></button>
+              <span class="form-note">Свяжемся в течение рабочего дня.</span>
+            </div>
+          </div>
+          <div class="form-ok">
+            <h3 class="serif" style="font-size: var(--step-2)">Заявка отправлена</h3>
+            <p class="mt-s" style="opacity:.85">Спасибо! Свяжемся с вами в течение рабочего дня и предложим формат под вашу команду. <span class="pill-note">(демо-режим прототипа)</span></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <a class="brand" href="index.html" style="color: var(--paper)"><b>GY</b><span style="color: rgba(246,241,232,.6)">для бизнеса</span></a>
+        <nav class="footer-nav" aria-label="Направления">
+          <a href="hr.html">Забота о команде</a>
+          <a href="pr.html">Событие для гостей</a>
+          <a href="agency.html">Для агентств</a>
+          <a href="https://generation.yoga">generation.yoga</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>Generation Yoga · корпоративное направление · Санкт-Петербург</span>
+        <span>Йога и телесные практики для бизнеса, с 2013 года</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,417 @@
+/* =========================================================================
+   Generation Yoga — Корпоративное направление
+   Дизайн-система. Мотив: линия горизонта (море+небо залива).
+   Палитра из материала: чернила, бумага, оранжевый бренда, морская глубина.
+   ========================================================================= */
+
+:root {
+  --ink:      #0E0E0E;   /* чернила — тёмные экраны, текст на светлом */
+  --ink-soft: #1C1C1B;
+  --paper:    #F6F1E8;   /* бумага — основной светлый фон */
+  --paper-2:  #EFE8DA;   /* бумага чуть глубже — карточки */
+  --orange:   #F26B1F;   /* оранжевый GY — единственный горячий акцент */
+  --orange-d: #D2560F;
+  --marine:   #17323D;   /* глубина воды залива — холодный второй акцент */
+  --marine-2: #21495A;
+  --mist:     #DCE4E6;   /* небо/дымка */
+  --stone:    #8A857A;   /* камень набережной — подписи, второстепенное */
+  --line:     rgba(14,14,14,.14);
+  --line-on-ink: rgba(246,241,232,.18);
+
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-ui: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --wrap: 1180px;
+  --gutter: clamp(20px, 5vw, 64px);
+  --radius: 4px;
+
+  --step--1: clamp(0.82rem, 0.79rem + 0.15vw, 0.9rem);
+  --step-0:  clamp(1rem, 0.96rem + 0.2vw, 1.12rem);
+  --step-1:  clamp(1.2rem, 1.1rem + 0.5vw, 1.45rem);
+  --step-2:  clamp(1.5rem, 1.3rem + 1vw, 2.1rem);
+  --step-3:  clamp(2.1rem, 1.7rem + 2vw, 3.4rem);
+  --step-4:  clamp(2.9rem, 2.1rem + 3.6vw, 5.4rem);
+  --step-5:  clamp(3.6rem, 2.4rem + 5.6vw, 7.2rem);
+
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+/* --- reset ------------------------------------------------------------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-ui);
+  font-size: var(--step-0);
+  line-height: 1.62;
+  color: var(--ink);
+  background: var(--paper);
+  font-weight: 420;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; cursor: pointer; border: none; background: none; }
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 2px; }
+
+/* --- type -------------------------------------------------------------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  font-optical-sizing: auto;
+}
+h1 { font-size: var(--step-4); }
+em, .em { font-style: italic; }
+.serif { font-family: var(--font-display); }
+
+.eyebrow {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: var(--step--1);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stone);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7em;
+}
+.eyebrow::before {
+  content: "";
+  width: 26px; height: 1px;
+  background: var(--orange);
+  display: inline-block;
+}
+.eyebrow--plain::before { display: none; }
+
+/* --- layout ------------------------------------------------------------ */
+.wrap { width: min(100% - var(--gutter) * 2, var(--wrap)); margin-inline: auto; }
+/* full-bleed: блочный ребёнок .wrap растягивается до краёв вьюпорта */
+.bleed { margin-inline: calc(50% - 50vw); }
+.wrap--narrow { width: min(100% - var(--gutter) * 2, 820px); margin-inline: auto; }
+.section { padding-block: clamp(64px, 9vw, 128px); position: relative; }
+.section--tight { padding-block: clamp(48px, 6vw, 84px); }
+
+.on-ink { background: var(--ink); color: var(--paper); }
+.on-ink .eyebrow { color: rgba(246,241,232,.6); }
+.on-marine { background: var(--marine); color: var(--paper); }
+.on-marine .eyebrow { color: rgba(246,241,232,.66); }
+.on-paper-2 { background: var(--paper-2); }
+
+/* --- horizon line: the signature -------------------------------------- */
+/* Тонкая линия горизонта — сквозной разделитель. Слева море, справа небо. */
+.horizon {
+  position: relative;
+  height: 1px;
+  background: var(--line);
+  width: 100%;
+}
+.horizon::after {
+  content: "";
+  position: absolute;
+  left: 0; top: 50%;
+  width: var(--hz, 0%);
+  height: 1px;
+  background: var(--orange);
+  transform: translateY(-50%);
+  transition: width 1.4s var(--ease);
+}
+.is-visible .horizon::after { --hz: 100%; }
+.on-ink .horizon, .on-marine .horizon { background: var(--line-on-ink); }
+
+/* --- buttons ----------------------------------------------------------- */
+.btn {
+  --bg: var(--orange); --fg: #fff;
+  display: inline-flex; align-items: center; gap: 0.6em;
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-ui); font-weight: 650;
+  font-size: var(--step-0);
+  padding: 0.95em 1.6em;
+  border-radius: 100px;
+  letter-spacing: -0.01em;
+  transition: transform .25s var(--ease), background .25s var(--ease), box-shadow .25s var(--ease);
+  will-change: transform;
+}
+.btn:hover { background: var(--orange-d); transform: translateY(-2px); box-shadow: 0 10px 30px -12px rgba(242,107,31,.6); }
+.btn:active { transform: translateY(0); }
+.btn .arw { transition: transform .3s var(--ease); }
+.btn:hover .arw { transform: translateX(4px); }
+
+.btn--ghost { --bg: transparent; --fg: var(--ink); border: 1.5px solid var(--line); }
+.btn--ghost:hover { --bg: var(--ink); --fg: var(--paper); border-color: var(--ink); box-shadow: none; }
+.on-ink .btn--ghost { --fg: var(--paper); border-color: var(--line-on-ink); }
+.on-ink .btn--ghost:hover { --bg: var(--paper); --fg: var(--ink); border-color: var(--paper); }
+
+.link-arw {
+  display: inline-flex; align-items: center; gap: 0.5em;
+  font-weight: 600; border-bottom: 1px solid currentColor; padding-bottom: 2px;
+  transition: gap .25s var(--ease), color .25s var(--ease);
+}
+.link-arw:hover { gap: 0.85em; color: var(--orange); }
+
+/* --- header ------------------------------------------------------------ */
+.site-header {
+  position: sticky; top: 0; z-index: 60;
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header.on-ink { background: color-mix(in srgb, var(--ink) 82%, transparent); border-color: var(--line-on-ink); }
+.header-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; min-height: 70px;
+}
+.brand { display: inline-flex; align-items: baseline; gap: 0.55em; font-family: var(--font-display); }
+.brand b { font-family: var(--font-ui); font-weight: 800; font-size: 1.3rem; letter-spacing: -0.03em; }
+.brand span { font-size: var(--step--1); font-style: italic; color: var(--stone); }
+
+/* audience switcher */
+.aud-nav { display: flex; align-items: center; gap: 4px; }
+/* :not(.btn) — иначе эти правила перебивают .btn по специфичности
+   и кнопка в шапке теряет свой цвет текста. */
+.aud-nav a:not(.btn) {
+  font-weight: 600; font-size: var(--step--1);
+  padding: 0.5em 0.95em; border-radius: 100px;
+  color: var(--stone); transition: color .2s, background .2s;
+  white-space: nowrap;
+}
+.aud-nav a:not(.btn):hover { color: var(--ink); }
+.on-ink .aud-nav a:not(.btn):hover { color: var(--paper); }
+.aud-nav a:not(.btn)[aria-current="page"] { color: var(--ink); background: var(--paper-2); }
+.on-ink .aud-nav a:not(.btn)[aria-current="page"] { color: var(--ink); background: var(--paper); }
+.aud-nav .btn { margin-left: 8px; padding: 0.62em 1.25em; font-size: var(--step--1); }
+.header-cta { display: inline-flex; }
+.burger { display: none; }
+
+/* --- hero -------------------------------------------------------------- */
+.hero { position: relative; }
+.hero-media { position: relative; }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; }
+
+/* --- stat / numbers ---------------------------------------------------- */
+.stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 72px); align-items: start; }
+.stat { }
+.stat .num { font-family: var(--font-display); font-size: var(--step-4); line-height: 0.92; letter-spacing: -0.02em; }
+.stat .num em { color: var(--orange); }
+.stat .cap { margin-top: 0.7em; font-size: var(--step-0); max-width: 32ch; color: inherit; }
+.stat .src { display: block; margin-top: 0.6em; font-size: var(--step--1); color: var(--stone); }
+
+/* --- product cards ----------------------------------------------------- */
+.cards { display: grid; gap: 18px; }
+.cards--2 { grid-template-columns: repeat(2, 1fr); }
+.cards--3 { grid-template-columns: repeat(3, 1fr); }
+.card {
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: clamp(24px, 3vw, 38px);
+  display: flex; flex-direction: column; gap: 14px;
+  transition: transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+}
+.on-paper-2 .card { background: #fff; }
+.card:hover { transform: translateY(-4px); border-color: var(--orange); box-shadow: 0 24px 50px -30px rgba(14,14,14,.4); }
+.card .tag { font-size: var(--step--1); font-weight: 650; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
+.card h3 { font-size: var(--step-2); }
+.card .price { font-family: var(--font-ui); font-weight: 700; font-size: var(--step-1); color: var(--marine); letter-spacing: -0.02em; }
+.card .price small { font-weight: 500; color: var(--stone); font-size: 0.62em; letter-spacing: 0; }
+.card p { color: #46433d; }
+.card .fine { font-size: var(--step--1); color: var(--stone); }
+.card--anchor { background: var(--marine); color: var(--paper); border-color: transparent; }
+.card--anchor p, .card--anchor .card .tag { color: rgba(246,241,232,.75); }
+.card--anchor .tag { color: rgba(246,241,232,.6); }
+.card--anchor:hover { border-color: var(--orange); }
+
+/* --- concepts (сгруппированное меню) ----------------------------------- */
+.concept-group { border-top: 1px solid var(--line); padding-top: clamp(28px, 4vw, 48px); }
+.concept-group + .concept-group { margin-top: clamp(36px, 5vw, 64px); }
+.concept-head { display: flex; align-items: baseline; gap: 0.6em; margin-bottom: 28px; }
+.concept-head .glyph { font-size: 1.4em; }
+.concept-head h3 { font-size: var(--step-2); }
+.concept-head .lead { color: var(--stone); font-family: var(--font-ui); font-size: var(--step-0); }
+.concept-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.concept {
+  background: var(--paper); padding: 26px 24px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: background .25s var(--ease);
+}
+.on-paper-2 .concept { background: var(--paper-2); }
+.concept:hover { background: #fff; }
+.concept b { font-family: var(--font-display); font-weight: 500; font-size: var(--step-1); font-style: italic; }
+.concept span { font-size: var(--step--1); color: #56524a; line-height: 1.5; }
+
+/* --- reasons (почему лучше / почему мы) --------------------------------- */
+.reasons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px 48px; }
+.reason { padding: 26px 0; border-top: 1px solid var(--line-on-ink); display: flex; gap: 20px; }
+.on-paper-2 .reason, .section:not(.on-ink):not(.on-marine) .reason { border-top-color: var(--line); }
+.reason .idx { font-family: var(--font-display); font-style: italic; font-size: var(--step-1); color: var(--orange); flex: none; width: 1.6em; }
+.reason h4 { font-size: var(--step-1); margin-bottom: 6px; font-family: var(--font-ui); font-weight: 700; letter-spacing: -0.01em; }
+.reason p { color: inherit; opacity: .82; font-size: var(--step-0); }
+
+/* --- facts (нам доверяют) ---------------------------------------------- */
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+.fact { padding: 8px 0; }
+.fact .k { font-family: var(--font-display); font-size: var(--step-3); line-height: 1; letter-spacing: -0.02em; }
+.fact .v { margin-top: 0.5em; font-size: var(--step--1); color: inherit; opacity: .72; letter-spacing: 0.02em; }
+
+/* --- steps (как это работает) ------------------------------------------ */
+.steps { counter-reset: step; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.step { position: relative; padding-top: 30px; }
+.step::before {
+  counter-increment: step; content: "0" counter(step);
+  font-family: var(--font-display); font-style: italic; font-size: var(--step-1);
+  color: var(--orange); position: absolute; top: -6px; left: 0;
+}
+.step h4 { font-family: var(--font-ui); font-weight: 700; font-size: var(--step-1); margin-bottom: 8px; letter-spacing: -0.01em; }
+.step p { font-size: var(--step--1); opacity: .8; }
+
+/* --- lead magnet ------------------------------------------------------- */
+.leadmag {
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: clamp(28px, 4vw, 52px); background: var(--paper-2);
+}
+.leadmag h3 { font-size: var(--step-2); margin-bottom: 12px; }
+.leadmag .mini-form { display: flex; gap: 10px; flex-wrap: wrap; }
+.leadmag input { flex: 1 1 200px; }
+
+/* --- forms ------------------------------------------------------------- */
+.field { display: flex; flex-direction: column; gap: 8px; }
+label { font-size: var(--step--1); font-weight: 600; letter-spacing: 0.02em; }
+input, select, textarea {
+  font: inherit; font-size: var(--step-0);
+  padding: 0.85em 1em; border-radius: var(--radius);
+  border: 1.5px solid var(--line); background: #fff; color: var(--ink);
+  width: 100%; transition: border-color .2s;
+}
+.on-ink input, .on-marine input, .on-ink select, .on-ink textarea {
+  background: rgba(246,241,232,.06); border-color: var(--line-on-ink); color: var(--paper);
+}
+.on-ink input::placeholder, .on-marine input::placeholder { color: rgba(246,241,232,.4); }
+input:focus, select:focus, textarea:focus { border-color: var(--orange); outline: none; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-grid .full { grid-column: 1 / -1; }
+.form-note { font-size: var(--step--1); color: var(--stone); margin-top: 4px; }
+.form-ok { display: none; padding: 20px; border: 1px solid var(--orange); border-radius: var(--radius); background: rgba(242,107,31,.08); }
+.form-ok.show { display: block; }
+
+/* --- FAQ --------------------------------------------------------------- */
+.faq { border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary {
+  list-style: none; cursor: pointer; padding: 24px 40px 24px 0; position: relative;
+  font-family: var(--font-display); font-size: var(--step-1); line-height: 1.2;
+  transition: color .2s;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:hover { color: var(--orange); }
+.faq summary::after {
+  content: "+"; position: absolute; right: 4px; top: 22px;
+  font-family: var(--font-ui); font-weight: 400; font-size: 1.6rem; color: var(--orange);
+  transition: transform .3s var(--ease);
+}
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq .ans { padding: 0 40px 26px 0; color: #46433d; max-width: 70ch; }
+
+/* --- deadline ribbon --------------------------------------------------- */
+.deadline {
+  display: inline-flex; align-items: center; gap: 0.7em;
+  font-size: var(--step--1); font-weight: 600; letter-spacing: 0.02em;
+  color: var(--marine); background: var(--mist);
+  padding: 0.7em 1.2em; border-radius: 100px;
+}
+.deadline .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); }
+
+/* --- footer ------------------------------------------------------------ */
+.site-footer { background: var(--ink); color: var(--paper); padding-block: clamp(48px, 6vw, 80px) 40px; }
+.footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; align-items: flex-end; }
+.footer-nav { display: flex; gap: 26px; flex-wrap: wrap; }
+.footer-nav a { color: rgba(246,241,232,.7); font-size: var(--step--1); font-weight: 600; letter-spacing: 0.04em; transition: color .2s; }
+.footer-nav a:hover { color: var(--orange); }
+.footer-bottom { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--line-on-ink); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: var(--step--1); color: rgba(246,241,232,.5); }
+
+/* --- заглушки прототипа ------------------------------------------------ */
+/* .tbd — значение, которое команда ещё не утвердила. Намеренно заметно. */
+.tbd {
+  display: inline-block; font-family: var(--font-ui); font-weight: 600;
+  font-size: 0.86em; letter-spacing: 0.02em;
+  color: var(--orange-d); background: rgba(242,107,31,.1);
+  border: 1px dashed var(--orange); border-radius: 3px;
+  padding: 0.1em 0.5em;
+}
+.on-ink .tbd, .on-marine .tbd { color: #FFB27A; background: rgba(242,107,31,.14); }
+
+/* .ph — плейсхолдер под фото. Подпись = бриф на съёмку. */
+.ph {
+  position: relative; display: flex; align-items: flex-end;
+  background:
+    repeating-linear-gradient(135deg, rgba(23,50,61,.05) 0 10px, transparent 10px 20px),
+    var(--mist);
+  border: 1px dashed rgba(23,50,61,.32); border-radius: var(--radius);
+  aspect-ratio: 4 / 3; overflow: hidden; padding: 16px;
+}
+.ph span { font-size: var(--step--1); font-weight: 600; color: var(--marine); line-height: 1.35; }
+.ph::before {
+  content: "ФОТО"; position: absolute; top: 14px; left: 16px;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; color: rgba(23,50,61,.45);
+}
+.ph--wide { aspect-ratio: 16 / 9; }
+.ph--tall { aspect-ratio: 3 / 4; }
+
+/* --- reveal ------------------------------------------------------------ */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.reveal.is-visible { opacity: 1; transform: none; }
+.reveal[data-delay="1"] { transition-delay: .08s; }
+.reveal[data-delay="2"] { transition-delay: .16s; }
+.reveal[data-delay="3"] { transition-delay: .24s; }
+
+/* --- utility ----------------------------------------------------------- */
+.lede { font-size: var(--step-1); line-height: 1.5; max-width: 46ch; }
+.measure { max-width: 60ch; }
+.mt-s { margin-top: 14px; } .mt-m { margin-top: 26px; } .mt-l { margin-top: 44px; }
+.cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.pill-note { font-size: var(--step--1); color: var(--stone); }
+.section-head { max-width: 40ch; margin-bottom: clamp(32px, 4vw, 56px); }
+.section-head h2 { font-size: var(--step-3); margin-top: 14px; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 90px); align-items: center; }
+
+/* =========================================================================
+   Responsive
+   ========================================================================= */
+@media (max-width: 900px) {
+  .header-cta { display: none; }
+  .aud-nav { display: none; }
+  .burger { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 100px; }
+  .on-ink .burger { border-color: var(--line-on-ink); }
+  .stat-row { grid-template-columns: 1fr; }
+  .cards--2, .cards--3 { grid-template-columns: 1fr; }
+  .concept-list { grid-template-columns: 1fr; }
+  .reasons { grid-template-columns: 1fr; gap: 0; }
+  .facts { grid-template-columns: 1fr 1fr; gap: 20px 2px; }
+  .steps { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+  .leadmag { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .split { grid-template-columns: 1fr; }
+
+  /* mobile menu drawer */
+  .aud-nav.open {
+    display: flex; flex-direction: column; align-items: stretch;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--paper); border-bottom: 1px solid var(--line);
+    padding: 12px var(--gutter) 20px; gap: 4px;
+  }
+  .on-ink .aud-nav.open { background: var(--ink); border-color: var(--line-on-ink); }
+  .aud-nav.open a { padding: 0.85em 1em; }
+  .aud-nav.open .header-cta { display: inline-flex; margin-top: 8px; justify-content: center; }
+}
+@media (max-width: 540px) {
+  .facts { grid-template-columns: 1fr 1fr; }
+  .steps { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .horizon::after { transition: none !important; }
+  .btn, .card, .link-arw { transition: none !important; }
+}

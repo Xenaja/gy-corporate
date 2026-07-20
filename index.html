@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generation Yoga для бизнеса — йога и телесные практики</title>
+  <meta name="description" content="Йога и телесные практики для бизнеса: забота о команде, впечатления для клиентов, готовый модуль для ивент-агентств. Санкт-Петербург, с 2013 года.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <style>
+    /* --- Распутье: уникальный экран, живёт только здесь --------------- */
+    .cross { min-height: 100vh; background: var(--ink); color: var(--paper); display: flex; flex-direction: column; position: relative; overflow: hidden; }
+    .cross-bg { position: absolute; inset: 0; z-index: 0; }
+    .cross-bg img { width: 100%; height: 100%; object-fit: cover; opacity: .38; filter: saturate(.9); }
+    .cross-bg::after { content: ""; position: absolute; inset: 0; background:
+        linear-gradient(180deg, rgba(14,14,14,.6) 0%, rgba(14,14,14,.35) 34%, rgba(14,14,14,.72) 78%, var(--ink) 100%); }
+    /* Линия горизонта — разделитель в потоке между заголовком и лидом.
+       Тянется во всю ширину вьюпорта, оранжевый отрезок «прочерчивается». */
+    .cross-horizon { position: relative; height: 1px; background: rgba(246,241,232,.26); margin-block: clamp(28px, 4vh, 46px); }
+    .cross-horizon::before { content: ""; position: absolute; left: 0; top: 0; height: 1px; width: var(--w, 0%); background: var(--orange); transition: width 1.8s var(--ease) .35s; }
+    .cross.ready .cross-horizon::before { --w: 100%; }
+
+    .cross-inner { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; }
+    .cross-top { display: flex; justify-content: space-between; align-items: center; padding-top: 26px; }
+    .cross-lead { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-block: clamp(40px, 7vh, 90px); }
+    .cross-lead .eyebrow { color: rgba(246,241,232,.7); }
+    .cross-lead h1 { font-size: clamp(2.4rem, 1.5rem + 3.6vw, 4.5rem); max-width: 17ch; margin-top: 20px; }
+    .cross-lead h1 em { color: var(--orange); }
+    .cross-lead p { font-size: var(--step-1); max-width: 46ch; color: rgba(246,241,232,.82); }
+
+    .directions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(246,241,232,.14); border-top: 1px solid rgba(246,241,232,.14); }
+    .direction {
+      position: relative; background: rgba(14,14,14,.55); backdrop-filter: blur(3px);
+      padding: clamp(26px, 3vw, 42px) clamp(22px, 2.4vw, 34px) clamp(30px, 3.4vw, 46px);
+      display: flex; flex-direction: column; gap: 14px; min-height: 220px;
+      transition: background .35s var(--ease);
+    }
+    .direction:hover, .direction:focus-within { background: var(--marine); }
+    .direction .d-num { font-family: var(--font-display); font-style: italic; font-size: var(--step-1); color: var(--orange); }
+    .direction h2 { font-size: var(--step-2); letter-spacing: -0.01em; }
+    .direction p { font-size: var(--step--1); color: rgba(246,241,232,.72); flex: 1; }
+    .direction .go { display: inline-flex; align-items: center; gap: 0.5em; font-weight: 650; font-size: var(--step--1); letter-spacing: 0.02em; }
+    .direction .go .arw { transition: transform .3s var(--ease); }
+    .direction:hover .go .arw { transform: translateX(5px); }
+    .direction .stretch { position: absolute; inset: 0; }
+    .cross-trust { text-align: center; padding: 22px var(--gutter); font-size: var(--step--1); color: rgba(246,241,232,.6); letter-spacing: 0.03em; }
+    .cross-trust b { color: var(--paper); font-weight: 600; }
+
+    @media (max-width: 820px) {
+      .directions { grid-template-columns: 1fr; }
+      .direction { min-height: 0; }
+      .cross-horizon { top: 34%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="cross" id="cross">
+    <div class="cross-bg">
+      <img src="assets/img/yoga-sunset-wide.jpg" alt="Групповая йога-практика на набережной у залива на закате">
+    </div>
+    <div class="cross-inner wrap">
+      <header class="cross-top">
+        <a class="brand" href="index.html"><b>GY</b><span>для бизнеса</span></a>
+        <a class="link-arw" href="https://generation.yoga" style="border-color: rgba(246,241,232,.4)">generation.yoga</a>
+      </header>
+
+      <div class="cross-lead">
+        <span class="eyebrow">Санкт-Петербург · с 2013 года</span>
+        <h1>Йога и телесные практики <em>для бизнеса</em></h1>
+        <div class="cross-horizon bleed" aria-hidden="true"></div>
+        <p>Забота о команде и впечатления, которые запоминаются. Выберите, зачем вы пришли — покажем то, что подходит именно вам.</p>
+      </div>
+    </div>
+
+    <nav class="directions" aria-label="Выбор направления">
+      <div class="direction">
+        <span class="d-num">01</span>
+        <h2>Забота о&nbsp;команде</h2>
+        <p>Для HR и руководителей: антистресс, удержание, регулярные практики для сотрудников.</p>
+        <span class="go">Смотреть форматы <span class="arw">→</span></span>
+        <a class="stretch" href="hr.html" data-cta="cross:hr" aria-label="Забота о команде — для HR"></a>
+      </div>
+      <div class="direction">
+        <span class="d-num">02</span>
+        <h2>Событие для&nbsp;гостей</h2>
+        <p>Для PR и маркетинга: wow-впечатление на вашем клиентском или партнёрском мероприятии.</p>
+        <span class="go">Обсудить событие <span class="arw">→</span></span>
+        <a class="stretch" href="pr.html" data-cta="cross:pr" aria-label="Событие для клиентов и гостей — для PR"></a>
+      </div>
+      <div class="direction">
+        <span class="d-num">03</span>
+        <h2>Я&nbsp;ивент-агентство</h2>
+        <p>Готовый модуль под ключ: привозим оборудование, преподавателей и сценарий.</p>
+        <span class="go">Условия для агентств <span class="arw">→</span></span>
+        <a class="stretch" href="agency.html" data-cta="cross:agency" aria-label="Готовый модуль для ивент-агентств"></a>
+      </div>
+    </nav>
+
+    <div class="cross-trust">
+      <b>С 2013 года</b> · события от камерных групп до 350 человек · статусные площадки Петербурга
+    </div>
+  </main>
+
+  <script src="assets/js/site.js"></script>
+  <script>
+    // мягкое появление линии горизонта после загрузки фона
+    window.addEventListener("load", function () {
+      requestAnimationFrame(function () { document.getElementById("cross").classList.add("ready"); });
+    });
+  </script>
+</body>
+</html>
