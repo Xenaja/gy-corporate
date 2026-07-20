@@ -38,6 +38,8 @@
     .demo-band p { max-width: 52ch; margin-top: 8px; color: rgba(255,255,255,.9); }
     .demo-band .btn { background: var(--ink); color: var(--paper); }
     .demo-band .btn:hover { background: #000; box-shadow: 0 12px 30px -14px rgba(0,0,0,.6); }
+    /* .tbd на оранжевом фоне — тёмный, иначе оранжевый по оранжевому не читается */
+    .demo-band .tbd { color: var(--ink); background: rgba(14,14,14,.14); border-color: rgba(14,14,14,.5); }
     @media (max-width: 720px) { .demo-band .inner { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -66,7 +68,7 @@
           <p class="lede mt-m">Йога и практики восстановления для ваших сотрудников — в офисе, на выезде или регулярно.</p>
           <div class="cta-row mt-l">
             <a class="btn" href="#zayavka" data-cta="hero:hr">Подобрать формат для команды <span class="arw">→</span></a>
-            <a class="link-arw" href="#demo" data-cta="hero:demo">или начните с бесплатной демо</a>
+            <a class="link-arw" href="#demo" data-cta="hero:demo">или начните с пробной практики</a>
           </div>
         </div>
         <div class="hr-hero-media">
@@ -78,10 +80,10 @@
     <section class="section--tight demo-band" id="demo">
       <div class="wrap inner">
         <div>
-          <h2>Начните с бесплатной демо-практики</h2>
-          <p>Проведём 30-минутную практику для вашей команды — в офисе, без подготовки с вашей стороны. Вы увидите реакцию людей до того, как планировать бюджет.</p>
+          <h2>Начните с пробной практики</h2>
+          <p>Проведём 30-минутную практику для вашей команды — в офисе, без подготовки с вашей стороны, по минимальной стоимости <span class="tbd">от … ₽ — уточняется</span>. Вы увидите реакцию людей до того, как планировать бюджет на большой формат.</p>
         </div>
-        <a class="btn" href="#zayavka" data-cta="band:demo">Запланировать демо <span class="arw">→</span></a>
+        <a class="btn" href="#zayavka" data-cta="band:demo">Записаться на пробную <span class="arw">→</span></a>
       </div>
     </section>
 
@@ -258,7 +260,7 @@
           <h2>От заявки до практики — четыре шага</h2>
         </div>
         <div class="steps is-observe reveal">
-          <div class="step"><h4>Заявка</h4><p>Оставляете заявку или бронируете бесплатную демо. Отвечаем в течение рабочего дня.</p></div>
+          <div class="step"><h4>Заявка</h4><p>Оставляете заявку или бронируете пробную практику. Отвечаем в течение рабочего дня.</p></div>
           <div class="step"><h4>Подбор</h4><p>Уточняем задачу, состав и площадку — предлагаем формат и считаем стоимость.</p></div>
           <div class="step"><h4>Подготовка</h4><p>Берём организацию на себя: ведущие, оборудование, сценарий, тайминг.</p></div>
           <div class="step"><h4>Практика</h4><p>Проводим день заботы. Команда возвращается с ресурсом — и с техниками на будущее.</p></div>
@@ -292,7 +294,7 @@
           </details>
           <details>
             <summary>Как понять, что это подойдёт именно нашей команде?</summary>
-            <div class="ans">Начните с бесплатной демо-практики на 30 минут — увидите реакцию людей до каких-либо решений о бюджете.</div>
+            <div class="ans">Начните с пробной практики на 30 минут по минимальной стоимости — увидите реакцию людей до решений о бюджете на большой формат.</div>
           </details>
         </div>
       </div>
