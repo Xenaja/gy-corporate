@@ -220,6 +220,14 @@ em, .em { font-style: italic; }
 .card--anchor p, .card--anchor .card .tag { color: rgba(246,241,232,.75); }
 .card--anchor .tag { color: rgba(246,241,232,.6); }
 .card--anchor:hover { border-color: var(--orange); }
+/* Карточка с фото-баннером сверху. Баннер в край карточки (bleed), контент ниже. */
+.card__photo {
+  margin: calc(-1 * clamp(24px, 3vw, 38px)) calc(-1 * clamp(24px, 3vw, 38px)) 4px;
+  height: clamp(150px, 18vw, 200px); overflow: hidden;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.card__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 78%; transition: transform .5s var(--ease); }
+.card:hover .card__photo img { transform: scale(1.04); }
 
 /* --- concepts (сгруппированное меню) ----------------------------------- */
 .concept-group { border-top: 1px solid var(--line); padding-top: clamp(28px, 4vw, 48px); }
@@ -238,6 +246,51 @@ em, .em { font-style: italic; }
 .concept:hover { background: #fff; }
 .concept b { font-family: var(--font-display); font-weight: 500; font-size: var(--step-1); font-style: italic; }
 .concept span { font-size: var(--step--1); color: #56524a; line-height: 1.5; }
+
+/* Фото-ячейка — плитка со снимком и светлым текстом поверх тёмного градиента.
+   Сразу видно фото, акцент среди обычных карточек, места не больше соседей.
+   Двойной класс (.concept.concept--photo) — иначе .on-paper-2 .concept
+   перебивает фон по специфичности. */
+/* Реальный <img> под градиентом — надёжнее, чем url() в custom-property
+   (относительный путь в var() из inline-стиля не всегда резолвится). */
+.concept.concept--photo {
+  position: relative; overflow: hidden; color: var(--paper);
+  min-height: 230px; justify-content: flex-end; background: var(--marine);
+}
+.concept.concept--photo > .concept-bg {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  z-index: 0; transition: transform .5s var(--ease);
+}
+.concept.concept--photo::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to top, rgba(14,14,14,.92) 0%, rgba(14,14,14,.5) 38%, rgba(14,14,14,.04) 78%);
+}
+.concept.concept--photo > b,
+.concept.concept--photo > span { position: relative; z-index: 2; }
+.concept.concept--photo b { color: #fff; }
+.concept.concept--photo span { color: rgba(246,241,232,.9); }
+.concept.concept--photo:hover > .concept-bg { transform: scale(1.05); }
+/* «По запросу» — приглушённая карточка: фон как у соседей, тон текста тише,
+   маленькая метка сверху. Визуально второстепенна, но в одной сетке. */
+.concept--muted b { font-style: normal; font-family: var(--font-ui); font-weight: 700; font-size: var(--step-0); color: #6b665c; }
+.concept--muted b::before {
+  content: "по запросу"; display: block; margin-bottom: 8px;
+  font-size: 0.64rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone);
+}
+.concept--muted span { color: var(--stone); }
+
+/* Полоса «соберём формат под запрос» — посередине меню, на глазах */
+.concept-cta {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px 32px;
+  flex-wrap: wrap;
+  margin: clamp(36px, 5vw, 64px) 0;
+  padding: clamp(22px, 3vw, 32px) clamp(24px, 3vw, 38px);
+  background: var(--marine); color: var(--paper); border-radius: var(--radius);
+}
+.concept-cta span { font-size: var(--step-1); line-height: 1.4; max-width: 60ch; }
+.concept-cta b { font-family: var(--font-display); font-style: italic; font-weight: 500; color: #fff; }
+.concept-cta .link-arw { flex: none; }
+.concept-cta .link-arw:hover { color: #FFB27A; }
 
 /* --- reasons (почему лучше / почему мы) --------------------------------- */
 .reasons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px 48px; }
