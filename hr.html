@@ -41,6 +41,17 @@
     /* .tbd на оранжевом фоне — тёмный, иначе оранжевый по оранжевому не читается */
     .demo-band .tbd { color: var(--ink); background: rgba(14,14,14,.14); border-color: rgba(14,14,14,.5); }
     @media (max-width: 720px) { .demo-band .inner { grid-template-columns: 1fr; } }
+
+    /* конструктор события: 6 шагов-ячеек, списки собираются «плюсами» */
+    .builder { counter-reset: bstep; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .b-step { background: var(--paper); padding: clamp(24px, 3vw, 34px); }
+    .b-step::before { counter-increment: bstep; content: "0" counter(bstep); font-family: var(--font-display); font-style: italic; font-size: var(--step-1); color: var(--orange); display: block; }
+    .b-step h3 { font-family: var(--font-ui); font-weight: 700; font-size: var(--step-1); letter-spacing: -0.01em; margin-top: 6px; }
+    .b-step .sub { display: block; font-size: var(--step--1); color: var(--stone); margin-top: 2px; }
+    .b-step ul { list-style: none; margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+    .b-step li { font-size: var(--step--1); color: #46433d; padding-left: 18px; position: relative; }
+    .b-step li::before { content: "+"; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+    @media (max-width: 860px) { .builder { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -164,7 +175,7 @@
 
         <div class="cards cards--3 is-observe reveal">
           <article class="card">
-            <figure class="card__photo"><img src="assets/img/sound-bowls.jpg" alt="Звукотерапия на поющих чашах"></figure>
+            <figure class="card__photo"><img src="assets/img/hang-drum.jpg" alt="Практика расслабления под живой инструмент среди зелени"></figure>
             <h3>Антистресс и восстановление</h3>
             <p>Снять напряжение и вернуть команде ресурс.</p>
             <div class="horizon"></div>
@@ -189,9 +200,109 @@
           </article>
         </div>
 
+      </div>
+    </section>
+
+    <!-- КОНСТРУКТОР СОБЫТИЯ -->
+    <section class="section" id="konstruktor">
+      <div class="wrap">
+        <div class="section-head is-observe reveal">
+          <span class="eyebrow">Конструктор события</span>
+          <h2>Соберите событие под вашу компанию</h2>
+          <p class="mt-m" style="color: #46433d">Уникальный формат и программа собираются как из конструктора — шесть шагов, в каждом выбираете только то, что откликается вашей команде.</p>
+        </div>
+
+        <div class="builder is-observe reveal">
+          <div class="b-step">
+            <h3>Формат</h3>
+            <span class="sub">С чего начинается событие</span>
+            <ul>
+              <li>Завтрак с практикой</li>
+              <li>Утренний корпоратив</li>
+              <li>Sunset-событие</li>
+              <li>Family Day</li>
+              <li>День здоровья</li>
+              <li>Выездной ретрит</li>
+              <li>Практика на конференции</li>
+              <li>Тимбилдинг</li>
+            </ul>
+          </div>
+          <div class="b-step">
+            <h3>Движение и восстановление</h3>
+            <span class="sub">Основа программы</span>
+            <ul>
+              <li>Йога для тех, кто никогда не занимался</li>
+              <li>Дыхательные практики и антистресс</li>
+              <li>Быстрое восстановление за 15 минут</li>
+              <li>Мобильность и здоровая спина</li>
+              <li>Саундхилинг: гонги и поющие чаши</li>
+              <li>Как восстановить энергию без кофе</li>
+              <li>Телесная перезагрузка</li>
+              <li>Осознанная прогулка</li>
+              <li>Гвоздестояние, нейрографика, арт-практика — по желанию</li>
+            </ul>
+          </div>
+          <div class="b-step">
+            <h3>Командные активности</h3>
+            <span class="sub">То, ради чего HR собирает всех вместе</span>
+            <ul>
+              <li>Практика доверия</li>
+              <li>Парные задания</li>
+              <li>Командный квест</li>
+              <li>Работа с ценностями</li>
+              <li>Игра на коммуникацию</li>
+              <li>Осознанное знакомство</li>
+              <li>Круг благодарности</li>
+              <li>Практика «Без телефонов»</li>
+            </ul>
+          </div>
+          <div class="b-step">
+            <h3>Впечатления</h3>
+            <span class="sub">Эмоция, которую запомнят</span>
+            <ul>
+              <li>Иммерсивный саундхилинг</li>
+              <li>Световое шоу</li>
+              <li>DJ-сет / экстатик-дэнс</li>
+              <li>Silent disco</li>
+              <li>Живая этническая музыка</li>
+              <li>Огненное шоу</li>
+              <li>Перформанс с музыкантами</li>
+              <li>Sunset-сессия</li>
+              <li>Fire circle / церемония открытия</li>
+            </ul>
+          </div>
+          <div class="b-step">
+            <h3>Wellness-бар</h3>
+            <span class="sub">Забота о гостях</span>
+            <ul>
+              <li>Смузи- и матча-бар</li>
+              <li>Какао- и чайная церемония</li>
+              <li>Фруктовый бар</li>
+              <li>Вегетарианский фуршет</li>
+              <li>Healthy candy bar и полезные десерты</li>
+              <li>Авторский кофе</li>
+              <li>Витаминные шоты</li>
+            </ul>
+          </div>
+          <div class="b-step">
+            <h3>Сервис и на память</h3>
+            <span class="sub">Чтобы событие осталось с командой</span>
+            <ul>
+              <li>Профессиональный фотограф и видео-reels</li>
+              <li>Ведущий</li>
+              <li>Музыкальное сопровождение</li>
+              <li>Фотозона / полароид-зона</li>
+              <li>Персональные открытки и подарки участникам</li>
+              <li>Брендированный мерч</li>
+              <li>Wellness box</li>
+              <li>Брендирование площадки</li>
+            </ul>
+          </div>
+        </div>
+
         <div class="concept-cta is-observe reveal">
-          <span>Под каждую задачу <b>соберём формат под ваш запрос</b> — из практик, которые у нас уже есть.</span>
-          <a class="link-arw" href="#zayavka" data-cta="concepts:custom">Обсудить формат</a>
+          <span>Отметьте, что откликается, — <b>соберём программу и посчитаем стоимость</b> под вашу задачу и бюджет.</span>
+          <a class="link-arw" href="#zayavka" data-cta="builder:custom">Собрать моё событие</a>
         </div>
       </div>
     </section>
