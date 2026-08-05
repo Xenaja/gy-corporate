@@ -173,7 +173,8 @@ em, .em { font-style: italic; }
    и кнопка в шапке теряет свой цвет текста. */
 .aud-nav a:not(.btn) {
   font-weight: 600; font-size: var(--step--1);
-  padding: 0.5em 0.95em; border-radius: 100px;
+  /* паддинги ужаты под полные канонические имена разделов (ТЗ: слова не сокращать) */
+  padding: 0.5em 0.7em; border-radius: 100px;
   color: var(--stone); transition: color .2s, background .2s;
   white-space: nowrap;
 }
