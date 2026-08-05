@@ -306,6 +306,14 @@ em, .em { font-style: italic; }
 .fact .k { font-family: var(--font-display); font-size: var(--step-3); line-height: 1; letter-spacing: -0.02em; }
 .fact .v { margin-top: 0.5em; font-size: var(--step--1); color: inherit; opacity: .72; letter-spacing: 0.02em; }
 
+/* --- cases (кейсы в «нам доверяют») ------------------------------------ */
+.cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 44px); margin-top: clamp(36px, 5vw, 60px); }
+.case { border-top: 2px solid var(--orange); padding-top: 16px; }
+.case .who { font-weight: 750; font-size: var(--step-1); letter-spacing: -0.01em; }
+.case .what { display: block; margin-top: 6px; font-size: var(--step--1); font-weight: 650; opacity: .92; }
+.case p { margin-top: 10px; font-size: var(--step--1); opacity: .72; }
+@media (max-width: 860px) { .cases { grid-template-columns: 1fr; } }
+
 /* --- steps (как это работает) ------------------------------------------ */
 .steps { counter-reset: step; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .step { position: relative; padding-top: 30px; }
