@@ -345,6 +345,12 @@ input:focus, select:focus, textarea:focus { border-color: var(--orange); outline
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .form-grid .full { grid-column: 1 / -1; }
 .form-note { font-size: var(--step--1); color: var(--stone); margin-top: 4px; }
+/* согласие на обработку ПД — обязательный элемент форм (152-ФЗ) */
+.consent { display: flex; gap: 10px; align-items: flex-start; font-size: var(--step--1); color: var(--stone); margin-top: 14px; cursor: pointer; max-width: 52ch; }
+.consent input { width: 15px; height: 15px; padding: 0; margin-top: 3px; accent-color: var(--orange); flex: none; }
+.consent a { text-decoration: underline; }
+.consent a:hover { color: var(--orange); }
+.on-ink .consent, .on-marine .consent { color: rgba(246,241,232,.55); }
 .form-ok { display: none; padding: 20px; border: 1px solid var(--orange); border-radius: var(--radius); background: rgba(242,107,31,.08); }
 .form-ok.show { display: block; }
 
