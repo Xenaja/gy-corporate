@@ -10,42 +10,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css">
   <style>
-    /* AG hero — деловой: без фонового фото, максимум смысла на экран */
-    .ag-hero { background: var(--marine); color: var(--paper); padding-block: clamp(56px, 9vh, 120px); }
-    .ag-hero h1 { font-size: clamp(2.2rem, 1.4rem + 2.8vw, 3.5rem); max-width: 16ch; }
-    .ag-hero h1 em { color: var(--orange); }
     .ag-hero h1 .keep { white-space: nowrap; } /* «wow-модуль» не рвём переносом */
-    .ag-hero .lede { color: rgba(246,241,232,.84); margin-top: 22px; }
-    .ag-hero .split { align-items: end; gap: clamp(32px, 5vw, 64px); }
 
-    /* каталог-палитра */
-    .catalog { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-    .cat-col { background: var(--paper); padding: clamp(24px, 3vw, 34px); }
-    .cat-col h3 { font-size: var(--step-1); font-family: var(--font-ui); font-weight: 700; letter-spacing: -0.01em; }
-    .cat-col .eyebrow { margin-bottom: 12px; }
-    .cat-col ul { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
-    .cat-col li { font-size: var(--step--1); padding-left: 18px; position: relative; color: #46433d; }
-    .cat-col li::before { content: "—"; position: absolute; left: 0; color: var(--orange); }
-    @media (max-width: 860px) { .catalog { grid-template-columns: 1fr; } }
+    /* Каталог форматов — три белые карточки-колонки. */
+    .catalog { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .cat-col {
+      background: #fff; border: 1px solid var(--hairline); border-radius: var(--radius);
+      padding: clamp(24px, 3vw, 32px); transition: all .15s ease;
+    }
+    .cat-col:hover { border-color: var(--accent); box-shadow: 0 10px 30px rgba(14,14,14,.1); }
+    .cat-col h3 { font-size: var(--t-h4); margin-top: 12px; text-transform: uppercase; letter-spacing: -0.02em; }
+    .cat-col ul { list-style: none; margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+    .cat-col li { font-size: var(--t-small); line-height: 1.45; padding-left: 18px; position: relative; color: var(--body-card); }
+    .cat-col li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+    @media (max-width: 900px) { .catalog { grid-template-columns: 1fr; } }
 
-    /* условия */
-    .terms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .term { border-top: 2px solid var(--orange); padding-top: 18px; }
-    .term h4 { font-family: var(--font-ui); font-weight: 700; font-size: var(--step-1); margin-bottom: 8px; }
-    .term p { font-size: var(--step--1); color: #46433d; }
-    .on-ink .term p { color: rgba(246,241,232,.78); }
-    @media (max-width: 860px) { .terms { grid-template-columns: 1fr; } }
+    /* Условия партнёрства */
+    .terms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .term { border-top: 2px solid var(--accent); padding-top: 18px; }
+    .term h4 { margin-bottom: 8px; }
+    .term p { font-size: var(--t-small); line-height: 1.45; }
+    @media (max-width: 900px) { .terms { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-  <header class="site-header" data-page="agency">
+  <header class="site-header on-ink" data-hero-dark data-page="agency">
     <div class="wrap header-row">
       <a class="brand" href="index.html"><b>GY</b><span>для бизнеса</span></a>
       <nav class="aud-nav" aria-label="Аудитории">
         <a href="hr.html">Забота о команде</a>
         <a href="pr.html">Событие для гостей</a>
         <a href="agency.html" aria-current="page">Для агентств</a>
-        <a class="btn header-cta" href="#zayavka" data-cta="header:agency">Запросить условия</a>
+        <a class="btn btn--ghost header-cta" href="#zayavka" data-cta="header:agency">Запросить условия</a>
       </nav>
       <button class="burger" aria-label="Меню" aria-expanded="false">
         <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M0 1h18M0 6h18M0 11h18" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -54,27 +50,31 @@
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="ag-hero hero">
-      <div class="wrap split">
-        <div>
-          <span class="eyebrow">Для ивент-агентств</span>
-          <h1 class="mt-s">Готовый <em class="keep">wow-модуль</em> для ваших корпоративов</h1>
-          <p class="lede">Вставляете нас в свой проект как яркий блок — привозим оборудование, преподавателей и сценарий. Минимум хлопот вашему менеджеру.</p>
-          <div class="cta-row mt-l">
-            <a class="btn" href="#zayavka" data-cta="hero:agency">Запросить условия для агентств <span class="arw">→</span></a>
-          </div>
+    <!-- ГЕРОЙ -->
+    <section class="hero ag-hero">
+      <!-- Кадр в работе: нужен широкий план массовой практики на корпоративе. -->
+      <div class="ph ph--hero"><span>Массовая практика на корпоративе: широкий план, видно масштаб и оборудование</span></div>
+      <div class="hero__inner wrap">
+        <span class="eyebrow">Для ивент-агентств</span>
+        <h1>Готовый <em class="keep">wow-модуль</em> для ваших корпоративов</h1>
+        <p class="hero__sub">Вставляете нас в свой проект как яркий блок — привозим оборудование, преподавателей и сценарий. Минимум хлопот вашему менеджеру.</p>
+        <div class="cta-row">
+          <a class="btn" href="#zayavka" data-cta="hero:agency">Запросить условия</a>
+          <a class="link-under" href="#magnit" data-cta="hero:catalog">Каталог форматов (PDF)</a>
         </div>
-        <div>
-          <div class="horizon" style="margin-bottom: 28px"></div>
-          <div class="facts" style="grid-template-columns: 1fr 1fr; gap: 26px 20px">
-            <div class="fact"><div class="k">13 лет</div><div class="v">работаем с корпоративными заказчиками</div></div>
-            <div class="fact"><div class="k">1000+</div><div class="v">проведённых мероприятий</div></div>
-            <div class="fact"><div class="k">350</div><div class="v">гостей на одном событии</div></div>
-            <div class="fact"><div class="k">РФ и мир</div><div class="v">события по всей России и за рубежом</div></div>
-          </div>
-          <p class="form-note mt-m" style="color: rgba(246,241,232,.55)">Среди клиентов: Райффайзен Банк, befree, Yclients, ЦДС, ФК «Зенит»</p>
+      </div>
+    </section>
+
+    <!-- ПОЛОСА ДОВЕРИЯ -->
+    <section class="trust" aria-label="Опыт">
+      <div class="wrap">
+        <div class="facts">
+          <div class="fact"><div class="k">13 лет</div><div class="v">работаем с корпоративными заказчиками</div></div>
+          <div class="fact"><div class="k">1000+</div><div class="v">проведённых мероприятий</div></div>
+          <div class="fact"><div class="k">350</div><div class="v">гостей на одном событии</div></div>
+          <div class="fact"><div class="k k--word">РФ и мир</div><div class="v">события по всей России и за рубежом</div></div>
         </div>
+        <div class="clients">Среди клиентов: Райффайзен Банк, befree, Yclients, ЦДС, ФК «Зенит»</div>
       </div>
     </section>
 
@@ -83,7 +83,7 @@
       <div class="wrap">
         <div class="section-head is-observe reveal">
           <span class="eyebrow">Почему с нами агентству</span>
-          <h2>Один подрядчик — закрытый блок программы</h2>
+          <h2>Один подрядчик — закрытый <em>блок программы</em></h2>
         </div>
         <div class="reasons is-observe reveal">
           <div class="reason"><span class="idx">01</span><div><h4>Под ключ</h4><p>Всё своё: оборудование, специалисты, сценарий. От вас — только площадка и участники.</p></div></div>
@@ -95,7 +95,7 @@
     </section>
 
     <!-- МИРОВОЙ ТРЕНД — АРГУМЕНТ ДЛЯ КЛИЕНТА -->
-    <section class="section section--tight on-marine">
+    <section class="section section--tight on-ink">
       <div class="wrap is-observe reveal">
         <span class="eyebrow">Аргумент для вашего клиента</span>
         <p class="lede mt-m" style="max-width: 62ch">Корпоративный wellness — уже не эксперимент, а стандарт лучших работодателей мира: Google, Salesforce, SAP, Nike и сотни компаний инвестируют в йогу, медитацию и программы восстановления. <em class="serif">Предлагая клиенту wellness-модуль, вы продаёте мировой тренд, а не рискованную новинку.</em></p>
@@ -103,25 +103,25 @@
     </section>
 
     <!-- КАТАЛОГ -->
-    <section class="section on-paper-2">
+    <section class="section on-cream">
       <div class="wrap">
         <div class="section-head is-observe reveal">
           <span class="eyebrow">Каталог форматов</span>
-          <h2>Палитра, из которой собирается предложение клиенту</h2>
+          <h2>Палитра, из которой собирается <em>предложение клиенту</em></h2>
         </div>
         <div class="catalog is-observe reveal">
           <div class="cat-col">
-            <span class="eyebrow eyebrow--plain">HR-форматы</span>
+            <span class="tag">HR-форматы</span>
             <h3>Забота о команде</h3>
             <ul>
-              <li>День заботы — корпоративный день восстановления, от 65 000 ₽</li>
-              <li>Регулярность — абонемент практик, от 35 000 ₽/мес</li>
+              <li>День заботы — корпоративный день восстановления, от&nbsp;65&nbsp;000&nbsp;₽</li>
+              <li>Регулярность — абонемент практик, от&nbsp;35&nbsp;000&nbsp;₽/мес</li>
               <li>Ретрит / Digital Detox — 1–2 дня перезагрузки на выезде</li>
               <li>Задачи: антистресс и восстановление, впечатления, объединение</li>
             </ul>
           </div>
           <div class="cat-col">
-            <span class="eyebrow eyebrow--plain">PR-форматы</span>
+            <span class="tag">PR-форматы</span>
             <h3>События для гостей</h3>
             <ul>
               <li>PR-интеграция — практика внутри конференции или форума</li>
@@ -130,7 +130,7 @@
             </ul>
           </div>
           <div class="cat-col">
-            <span class="eyebrow eyebrow--plain">Локации</span>
+            <span class="tag">Локации</span>
             <h3>Необычные площадки</h3>
             <ul>
               <li>SUP-йога на воде</li>
@@ -141,7 +141,7 @@
           </div>
         </div>
         <div class="cta-row mt-l is-observe reveal">
-          <a class="link-arw" href="#magnit" data-cta="catalog:pdf">Скачать каталог с условиями (PDF)</a>
+          <a class="link-arw" href="#magnit" data-cta="catalog:pdf">Скачать каталог с условиями (PDF) →</a>
         </div>
       </div>
     </section>
@@ -151,7 +151,7 @@
       <div class="wrap">
         <div class="section-head is-observe reveal">
           <span class="eyebrow">Условия работы</span>
-          <h2>Как устроено партнёрство</h2>
+          <h2>Как устроено <em>партнёрство</em></h2>
         </div>
         <div class="terms is-observe reveal">
           <div class="term">
@@ -168,7 +168,7 @@
           </div>
         </div>
 
-        <div class="steps is-observe reveal mt-l" style="margin-top: clamp(44px, 6vw, 72px)">
+        <div class="steps is-observe reveal" style="margin-top: clamp(44px, 6vw, 72px)">
           <div class="step"><h4>Запрос</h4><p>Присылаете вводные: задача клиента, дата, площадка, бюджет.</p></div>
           <div class="step"><h4>Расчёт</h4><p>Возвращаем формат и смету — в виде, который можно показать клиенту.</p></div>
           <div class="step"><h4>Согласование</h4><p>Ваш менеджер согласует с клиентом. Общаемся так, как удобно агентству.</p></div>
@@ -184,7 +184,7 @@
           <div>
             <span class="eyebrow">Для партнёров · бесплатно</span>
             <h3 class="mt-s">Каталог форматов и условия для партнёров (PDF)</h3>
-            <p style="color:#56524a">Что предложить клиенту и на каких условиях — один файл, который можно переслать внутри агентства.</p>
+            <p>Что предложить клиенту и на каких условиях — один файл, который можно переслать внутри агентства.</p>
           </div>
           <div class="form-fields">
             <div class="mini-form">
@@ -192,31 +192,31 @@
               <button class="btn" type="submit" data-cta="magnet:agency">Получить каталог</button>
             </div>
             <label class="consent"><input type="checkbox" name="consent" required> <span>Даю согласие на обработку персональных данных (<a href="privacy.html">политика</a>)</span></label>
-            <p class="form-note">Пришлём сразу, без звонков.</p>
+            <p class="form-note mt-s">Пришлём сразу, без звонков.</p>
           </div>
           <div class="form-ok">Каталог отправлен — проверьте почту или Telegram. <span class="pill-note">(демо-режим прототипа)</span></div>
         </form>
 
-        <div class="leadmag is-observe reveal" data-delay="1" style="margin-top: 18px; background: var(--marine); color: var(--paper); border-color: transparent">
+        <div class="leadmag is-observe reveal" data-delay="1" style="margin-top: 22px">
           <div>
-            <span class="eyebrow" style="color: rgba(246,241,232,.66)">Смотрины подрядчика</span>
-            <h3 class="mt-s">Приходите на наше открытое событие</h3>
-            <p style="opacity:.82">Посмотрите формат вживую до того, как предлагать его клиенту. Пришлём пригласительный на ближайшую дату.</p>
+            <span class="eyebrow">Смотрины подрядчика</span>
+            <h3 class="mt-s">Приходите на наше <em>открытое событие</em></h3>
+            <p>Посмотрите формат вживую до того, как предлагать его клиенту. Пришлём пригласительный на ближайшую дату.</p>
           </div>
           <div>
-            <a class="btn" href="#zayavka" data-cta="magnet:invite">Получить пригласительный <span class="arw">→</span></a>
-            <p class="form-note mt-s" style="color: rgba(246,241,232,.6)">Ближайшая дата: <span class="tbd">уточняется</span></p>
+            <a class="link-arw" href="#zayavka" data-cta="magnet:invite">Получить пригласительный →</a>
+            <p class="form-note mt-s">Ближайшая дата: <span class="tbd">уточняется</span></p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section class="section on-paper-2">
+    <section class="section on-cream">
       <div class="wrap--narrow">
         <div class="section-head is-observe reveal" style="margin-bottom: 32px">
           <span class="eyebrow">Частые вопросы</span>
-          <h2>Что спрашивают менеджеры агентств</h2>
+          <h2>Что спрашивают <em>менеджеры агентств</em></h2>
         </div>
         <div class="faq is-observe reveal">
           <details>
@@ -246,9 +246,9 @@
     <!-- ЗАЯВКА -->
     <section class="section on-ink" id="zayavka">
       <div class="wrap--narrow">
-        <div class="is-observe reveal" style="text-align: center; margin-bottom: 36px">
-          <h2 style="font-size: var(--step-3)">Напишите про ваш проект — <em>соберём предложение</em></h2>
-          <p class="lede mt-m" style="margin-inline: auto; color: rgba(246,241,232,.75)">Или запросите каталог форматов с условиями — пришлём файлом, без звонков.</p>
+        <div class="is-observe reveal" style="margin-bottom: 36px">
+          <h2>Напишите про ваш проект — <em>соберём предложение</em></h2>
+          <p class="lede mt-m">Или запросите каталог форматов с условиями — пришлём файлом, без звонков.</p>
         </div>
         <form class="is-observe reveal" data-stub="agency-lead" novalidate>
           <div class="form-fields">
@@ -275,13 +275,13 @@
             <input type="hidden" data-track="id" name="ref_id">
             <label class="consent"><input type="checkbox" name="consent" required> <span>Даю согласие на обработку персональных данных (<a href="privacy.html">политика</a>)</span></label>
             <div class="cta-row" style="margin-top: 24px; justify-content: space-between">
-              <button class="btn" type="submit" data-cta="form:agency-lead">Отправить запрос <span class="arw">→</span></button>
+              <button class="btn" type="submit" data-cta="form:agency-lead">Отправить запрос</button>
               <span class="form-note">Свяжемся в течение рабочего дня.</span>
             </div>
           </div>
           <div class="form-ok">
-            <h3 class="serif" style="font-size: var(--step-2)">Запрос отправлен</h3>
-            <p class="mt-s" style="opacity:.85">Спасибо! Свяжемся в течение рабочего дня и пришлём расчёт в виде, который можно показать клиенту. <span class="pill-note">(демо-режим прототипа)</span></p>
+            <h3>Запрос отправлен</h3>
+            <p class="mt-s">Спасибо! Свяжемся в течение рабочего дня и пришлём расчёт в виде, который можно показать клиенту. <span class="pill-note">(демо-режим прототипа)</span></p>
           </div>
         </form>
       </div>
@@ -291,12 +291,12 @@
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-top">
-        <a class="brand" href="index.html" style="color: var(--paper)"><b>GY</b><span style="color: rgba(246,241,232,.6)">для бизнеса</span></a>
+        <a class="brand" href="index.html" style="color: var(--paper)"><b>GY</b><span style="color: rgba(246,241,232,.7)">для бизнеса</span></a>
         <nav class="footer-nav" aria-label="Направления">
           <a href="hr.html">Забота о команде</a>
           <a href="pr.html">Событие для гостей</a>
           <a href="agency.html">Для агентств</a>
-          <a href="https://generation.yoga">generation.yoga</a>
+          <a class="is-site" href="https://generation.yoga">generation.yoga</a>
         </nav>
       </div>
       <div class="footer-bottom">

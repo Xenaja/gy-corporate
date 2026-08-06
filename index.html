@@ -9,119 +9,124 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css">
-  <style>
-    /* --- Распутье: уникальный экран, живёт только здесь --------------- */
-    .cross { min-height: 100vh; background: var(--ink); color: var(--paper); display: flex; flex-direction: column; position: relative; overflow: hidden; }
-    .cross-bg { position: absolute; inset: 0; z-index: 0; }
-    .cross-bg img { width: 100%; height: 100%; object-fit: cover; opacity: .38; filter: saturate(.9); }
-    .cross-bg::after { content: ""; position: absolute; inset: 0; background:
-        linear-gradient(180deg, rgba(14,14,14,.6) 0%, rgba(14,14,14,.35) 34%, rgba(14,14,14,.72) 78%, var(--ink) 100%); }
-    /* Линия горизонта — разделитель в потоке между заголовком и лидом.
-       Тянется во всю ширину вьюпорта, оранжевый отрезок «прочерчивается». */
-    .cross-horizon { position: relative; height: 1px; background: rgba(246,241,232,.26); margin-block: clamp(28px, 4vh, 46px); }
-    .cross-horizon::before { content: ""; position: absolute; left: 0; top: 0; height: 1px; width: var(--w, 0%); background: var(--orange); transition: width 1.8s var(--ease) .35s; }
-    .cross.ready .cross-horizon::before { --w: 100%; }
-
-    .cross-inner { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; }
-    .cross-top { display: flex; justify-content: space-between; align-items: center; padding-top: 26px; }
-    .cross-lead { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-block: clamp(40px, 7vh, 90px); }
-    .cross-lead .eyebrow { color: rgba(246,241,232,.7); }
-    .cross-lead h1 { font-size: clamp(2.4rem, 1.5rem + 3.6vw, 4.5rem); max-width: 17ch; margin-top: 20px; }
-    .cross-lead h1 em { color: var(--orange); }
-    .cross-lead p { font-size: var(--step-1); max-width: 46ch; color: rgba(246,241,232,.82); }
-
-    .directions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(246,241,232,.14); border-top: 1px solid rgba(246,241,232,.14); }
-    .direction {
-      position: relative; background: rgba(14,14,14,.55); backdrop-filter: blur(3px);
-      padding: clamp(26px, 3vw, 42px) clamp(22px, 2.4vw, 34px) clamp(30px, 3.4vw, 46px);
-      display: flex; flex-direction: column; gap: 14px; min-height: 220px;
-      transition: background .35s var(--ease);
-    }
-    .direction:hover, .direction:focus-within { background: var(--marine); }
-    .direction h2 { font-size: var(--step-2); letter-spacing: -0.01em; }
-    .direction p { font-size: var(--step--1); color: rgba(246,241,232,.72); flex: 1; }
-    .direction .go { display: inline-flex; align-items: center; gap: 0.5em; font-weight: 650; font-size: var(--step--1); letter-spacing: 0.02em; }
-    .direction .go .arw { transition: transform .3s var(--ease); }
-    .direction:hover .go .arw { transform: translateX(5px); }
-    .direction .stretch { position: absolute; inset: 0; }
-    .cross-trust { text-align: center; padding: 22px var(--gutter); font-size: var(--step--1); color: rgba(246,241,232,.6); letter-spacing: 0.03em; }
-    .cross-trust b { color: var(--paper); font-weight: 600; }
-
-    @media (max-width: 820px) {
-      .directions { grid-template-columns: 1fr; }
-      .direction { min-height: 0; }
-      .cross-horizon { top: 34%; }
-    }
-  </style>
 </head>
 <body>
   <main>
-  <section class="cross" id="cross">
-    <div class="cross-bg">
-      <img src="assets/img/yoga-sunset-wide.jpg" alt="Групповая йога-практика на набережной у залива на закате">
-    </div>
-    <div class="cross-inner wrap">
-      <header class="cross-top">
-        <a class="brand" href="index.html"><b>GY</b><span>для бизнеса</span></a>
-        <a class="link-arw" href="https://generation.yoga" style="border-color: rgba(246,241,232,.4)">generation.yoga</a>
-      </header>
+    <!-- ГЕРОЙ -->
+    <section class="hero" id="hero">
+      <div class="hero__media">
+        <img src="assets/img/yoga-sunset-wide.jpg" alt="Групповая йога-практика на набережной у залива на закате">
+      </div>
 
-      <div class="cross-lead">
+      <div class="hero__top">
+        <div class="wrap header-row">
+          <a class="brand" href="index.html"><b>GY</b><span>для бизнеса</span></a>
+          <a class="link-quiet" href="https://generation.yoga">generation.yoga</a>
+        </div>
+      </div>
+
+      <div class="hero__inner wrap">
         <span class="eyebrow">Санкт-Петербург · с 2013 года</span>
         <h1>Йога и телесные практики <em>для бизнеса</em></h1>
-        <div class="cross-horizon bleed" aria-hidden="true"></div>
-        <p>Забота о команде и впечатления, которые запоминаются. Выберите близкий вам запрос — покажем, что подходит.</p>
+        <p class="hero__sub">Забота о команде и впечатления, которые запоминаются. Выберите близкий вам запрос — покажем, что подходит.</p>
+        <div class="cta-row">
+          <a class="btn" href="#choose" data-cta="hero:choose">Подобрать формат</a>
+          <a class="link-under" href="#trend" data-cta="hero:trend">Зачем это компании</a>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <nav class="directions" aria-label="Выбор направления">
-      <div class="direction">
-        <h2>Забота о&nbsp;команде</h2>
-        <p>Для HR и руководителей: антистресс, удержание, регулярные практики для сотрудников.</p>
-        <span class="go">Смотреть форматы <span class="arw">→</span></span>
-        <a class="stretch" href="hr.html" data-cta="cross:hr" aria-label="Забота о команде — для HR"></a>
+    <!-- ПОЛОСА ДОВЕРИЯ -->
+    <section class="trust" aria-label="Опыт">
+      <div class="wrap">
+        <div class="facts">
+          <div class="fact"><div class="k">13 лет</div><div class="v">опыта — работаем с 2013 года</div></div>
+          <div class="fact"><div class="k">1000+</div><div class="v">проведённых мероприятий</div></div>
+          <div class="fact"><div class="k">350</div><div class="v">участников в одном событии</div></div>
+          <div class="fact"><div class="k k--word">РФ и мир</div><div class="v">события по всей России и за рубежом</div></div>
+        </div>
       </div>
-      <div class="direction">
-        <h2>Событие для&nbsp;гостей</h2>
-        <p>Для PR и маркетинга: wow-впечатление на вашем клиентском или партнёрском мероприятии.</p>
-        <span class="go">Обсудить событие <span class="arw">→</span></span>
-        <a class="stretch" href="pr.html" data-cta="cross:pr" aria-label="Событие для клиентов и гостей — для PR"></a>
-      </div>
-      <div class="direction">
-        <h2>Для&nbsp;агентств</h2>
-        <p>Готовый модуль под ключ: привозим оборудование, преподавателей и сценарий.</p>
-        <span class="go">Условия для агентств <span class="arw">→</span></span>
-        <a class="stretch" href="agency.html" data-cta="cross:agency" aria-label="Готовый модуль для ивент-агентств"></a>
-      </div>
-    </nav>
+    </section>
 
-    <div class="cross-trust">
-      <b>13 лет опыта</b> · 1000+ проведённых мероприятий · тысячи участников · события по всей России и за рубежом
-    </div>
-  </section>
+    <!-- РАЗВИЛКА -->
+    <section class="section" id="choose">
+      <div class="wrap">
+        <div class="section-head is-observe reveal">
+          <span class="eyebrow">Выберите свой запрос</span>
+          <h2>Три направления работы <em>с бизнесом</em></h2>
+        </div>
 
-  <!-- МИРОВОЙ ТРЕНД -->
-  <section class="section on-ink" id="trend">
-    <div class="wrap split" style="align-items: start">
-      <div class="is-observe reveal">
-        <span class="eyebrow">Мировой тренд</span>
-        <h2 class="mt-s" style="font-size: var(--step-3)">Корпоративный wellness — уже не бонус, а <em>стандарт лучших работодателей мира</em></h2>
+        <div class="cards cards--3 is-observe reveal">
+          <a class="card" href="hr.html" data-cta="cross:hr">
+            <div class="ph ph--card"><span>Команда на практике: горизонтальный кадр, лица, офисная одежда</span></div>
+            <div class="card__body">
+              <span class="tag">Для HR и руководителей</span>
+              <h3>Забота о команде</h3>
+              <p>Антистресс, удержание, регулярные практики для сотрудников.</p>
+              <span class="link-arw">Смотреть форматы →</span>
+            </div>
+          </a>
+
+          <a class="card" href="pr.html" data-cta="cross:pr">
+            <div class="ph ph--card"><span>Гости на wow-формате: планетарий, оранжерея или крыша, вечерний свет</span></div>
+            <div class="card__body">
+              <span class="tag">Для PR и маркетинга</span>
+              <h3>Событие для гостей</h3>
+              <p>Wow-впечатление на вашем клиентском или партнёрском мероприятии.</p>
+              <span class="link-arw">Обсудить событие →</span>
+            </div>
+          </a>
+
+          <a class="card" href="agency.html" data-cta="cross:agency">
+            <div class="ph ph--card"><span>Массовая практика на площадке: широкий план, виден масштаб события</span></div>
+            <div class="card__body">
+              <span class="tag">Для ивент-агентств</span>
+              <h3>Для агентств</h3>
+              <p>Готовый модуль под ключ: привозим оборудование, преподавателей и сценарий.</p>
+              <span class="link-arw">Условия для агентств →</span>
+            </div>
+          </a>
+        </div>
       </div>
-      <div class="is-observe reveal" data-delay="1">
-        <p style="color: rgba(246,241,232,.85)">Google, Salesforce, SAP, Nike, Deloitte и сотни международных компаний инвестируют в программы благополучия сотрудников: йогу, медитацию, практики осознанности и восстановления. Здоровые, вовлечённые и вдохновлённые люди работают эффективнее, реже выгорают и дольше остаются в компании. Исследования Deloitte показывают: забота о благополучии сотрудников стала одним из главных мировых HR-приоритетов.</p>
-        <div class="horizon mt-m"></div>
-        <p class="mt-m" style="color: rgba(246,241,232,.85)">Generation Yoga с 2013 года создаёт корпоративные wellness-события любого масштаба — от утренней практики для команды до фестивалей здоровья, дней благополучия и выездных ретритов. <em class="serif">Берём на себя весь процесс: от идеи и сценария до проведения под ключ.</em></p>
+    </section>
+
+    <!-- МИРОВОЙ ТРЕНД -->
+    <section class="section on-cream" id="trend">
+      <div class="wrap split">
+        <div class="is-observe reveal">
+          <span class="eyebrow">Мировой тренд</span>
+          <h2 class="h2--lg mt-s">Корпоративный wellness — уже не бонус, а <em>стандарт лучших работодателей мира</em></h2>
+          <div class="ph ph--tall mt-l"><span>Практика восстановления: крупный план, люди в расслаблении</span></div>
+        </div>
+
+        <div class="is-observe reveal" data-delay="1">
+          <p style="font-size: var(--t-body-lg); color: var(--body)">Google, Salesforce, SAP, Nike, Deloitte и сотни международных компаний инвестируют в программы благополучия сотрудников: йогу, медитацию, практики осознанности и восстановления. Здоровые, вовлечённые и вдохновлённые люди работают эффективнее, реже выгорают и дольше остаются в компании.</p>
+          <p class="mt-m" style="font-size: var(--t-body-lg); color: var(--body)">Исследования Deloitte показывают: забота о благополучии сотрудников стала одним из главных мировых HR-приоритетов.</p>
+          <div class="rule mt-m"></div>
+          <p class="mt-m" style="font-size: var(--t-body-lg); color: var(--body)">Generation Yoga с 2013 года создаёт корпоративные wellness-события любого масштаба — от утренней практики для команды до фестивалей здоровья, дней благополучия и выездных ретритов. <em class="serif" style="color: var(--ink)">Берём на себя весь процесс: от идеи и сценария до проведения под ключ.</em></p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   </main>
 
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <a class="brand" href="index.html" style="color: var(--paper)"><b>GY</b><span style="color: rgba(246,241,232,.7)">для бизнеса</span></a>
+        <nav class="footer-nav" aria-label="Направления">
+          <a href="hr.html">Забота о команде</a>
+          <a href="pr.html">Событие для гостей</a>
+          <a href="agency.html">Для агентств</a>
+          <a class="is-site" href="https://generation.yoga">generation.yoga</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>Generation Yoga · корпоративное направление · Санкт-Петербург</span>
+        <span>Йога и телесные практики для бизнеса, с 2013 года</span>
+      </div>
+    </div>
+  </footer>
+
   <script src="assets/js/site.js"></script>
-  <script>
-    // мягкое появление линии горизонта после загрузки фона
-    window.addEventListener("load", function () {
-      requestAnimationFrame(function () { document.getElementById("cross").classList.add("ready"); });
-    });
-  </script>
 </body>
 </html>

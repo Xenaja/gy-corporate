@@ -10,40 +10,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css">
   <style>
-    /* PR hero — фото на всю ширину, текст поверх. Тон ярче, событийнее. */
-    .pr-hero { position: relative; background: var(--ink); color: var(--paper); min-height: min(88vh, 780px); display: flex; align-items: flex-end; overflow: hidden; }
-    .pr-hero-bg { position: absolute; inset: 0; }
-    .pr-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 38%; }
-    /* Два скрима: вертикальный к низу + горизонтальный слева,
-       чтобы левый столбец текста лежал на спокойном тёмном поле. */
-    .pr-hero-bg::after { content: ""; position: absolute; inset: 0;
-      background:
-        linear-gradient(90deg, rgba(14,14,14,.86) 0%, rgba(14,14,14,.55) 42%, rgba(14,14,14,.1) 72%),
-        linear-gradient(180deg, rgba(14,14,14,.5) 0%, rgba(14,14,14,.2) 34%, rgba(14,14,14,.88) 100%); }
-    .pr-hero .wrap { position: relative; z-index: 2; padding-block: clamp(44px, 7vh, 88px); }
-    .pr-hero .eyebrow { color: rgba(246,241,232,.72); }
-    .pr-hero h1 { font-size: clamp(2.4rem, 1.5rem + 3.6vw, 4.4rem); max-width: 20ch; }
-    .pr-hero h1 em { color: var(--orange); }
-    .pr-hero .lede { color: rgba(246,241,232,.88); margin-top: 20px; max-width: 46ch; }
+    .hero__media img { object-position: center 38%; }
+
+    /* Заход: крупная строка-утверждение. Не заголовок — обычный регистр. */
+    .statement { font-size: clamp(1.3rem, 1rem + 1.4vw, 1.75rem); line-height: 1.35; max-width: 30ch; font-weight: 400; }
 
     /* wow-форматы: плитка локаций */
-    .wow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .wow-item { display: flex; flex-direction: column; gap: 12px; }
-    .wow-item h4 { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: var(--step-1); }
-    .wow-item p { font-size: var(--step--1); color: #56524a; }
+    .wow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .wow-item { display: flex; flex-direction: column; gap: 14px; }
+    .wow-item img { aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); width: 100%; }
+    .wow-item h4 { text-transform: uppercase; letter-spacing: -0.02em; }
+    .wow-item p { font-size: var(--t-small); line-height: 1.45; color: var(--body); }
     @media (max-width: 900px) { .wow { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 600px) { .wow { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-  <header class="site-header" data-hero-dark data-page="pr">
+  <header class="site-header on-ink" data-hero-dark data-page="pr">
     <div class="wrap header-row">
       <a class="brand" href="index.html"><b>GY</b><span>для бизнеса</span></a>
       <nav class="aud-nav" aria-label="Аудитории">
         <a href="hr.html">Забота о команде</a>
         <a href="pr.html" aria-current="page">Событие для гостей</a>
         <a href="agency.html">Для агентств</a>
-        <a class="btn header-cta" href="#zayavka" data-cta="header:pr">Обсудить событие</a>
+        <a class="btn btn--ghost header-cta" href="#zayavka" data-cta="header:pr">Обсудить событие</a>
       </nav>
       <button class="burger" aria-label="Меню" aria-expanded="false">
         <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M0 1h18M0 6h18M0 11h18" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -52,71 +42,77 @@
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="pr-hero hero">
-      <div class="pr-hero-bg">
+    <!-- ГЕРОЙ -->
+    <section class="hero">
+      <div class="hero__media">
         <img src="assets/img/rooftop-event.jpg" alt="Участники события на городской крыше с гирляндами">
       </div>
-      <div class="wrap">
+      <div class="hero__inner wrap">
         <span class="eyebrow">Для PR и маркетинга</span>
-        <h1 class="mt-s">Событие, которое <em>запомнят</em></h1>
-        <p class="lede">Необычные практики и активности для ваших клиентских и партнёрских мероприятий — от паузы-перезагрузки на форуме до события под ключ.</p>
-        <div class="cta-row mt-l">
-          <a class="btn" href="#zayavka" data-cta="hero:pr">Обсудить ваше событие <span class="arw">→</span></a>
-          <a class="link-arw" href="#wow" data-cta="hero:wow">Посмотреть wow-форматы</a>
+        <h1>Событие, которое <em>запомнят</em></h1>
+        <p class="hero__sub">Необычные практики и активности для ваших клиентских и партнёрских мероприятий — от паузы-перезагрузки на форуме до события под ключ.</p>
+        <div class="cta-row">
+          <a class="btn" href="#zayavka" data-cta="hero:pr">Обсудить ваше событие</a>
+          <a class="link-under" href="#wow" data-cta="hero:wow">Посмотреть wow-форматы</a>
         </div>
       </div>
     </section>
 
     <!-- ЗАХОД -->
     <section class="section">
-      <div class="wrap--narrow is-observe reveal" style="text-align: center">
-        <span class="eyebrow">Заход</span>
-        <p class="mt-m" style="font-family: var(--font-display); font-size: var(--step-2); line-height: 1.28">
-          Гости устали от стандартных активностей. Практика-перезагрузка или необычный wow-формат <em>выделяют ваше событие</em> и создают эмоцию, о которой рассказывают.
-        </p>
+      <div class="wrap split is-observe reveal">
+        <div>
+          <span class="eyebrow">Заход</span>
+          <p class="statement mt-m">Гости устали от стандартных активностей. Практика-перезагрузка или необычный wow-формат <em class="serif" style="color: var(--accent)">выделяют ваше событие</em> и создают эмоцию, о которой рассказывают.</p>
+        </div>
       </div>
     </section>
 
     <!-- МИРОВОЙ ТРЕНД -->
-    <section class="section section--tight on-marine">
+    <section class="section section--tight on-ink">
       <div class="wrap is-observe reveal">
         <span class="eyebrow">Мировой тренд</span>
         <p class="lede mt-m" style="max-width: 62ch">Йога, медитация и практики восстановления давно вошли в программы событий мировых брендов: Google, Salesforce, SAP, Nike делают wellness частью своей культуры и мероприятий. <em class="serif">Практика в программе ставит ваше событие в один ряд с лучшими.</em></p>
-        <p class="form-note mt-m" style="color: rgba(246,241,232,.55)">Generation Yoga создаёт такие форматы с 2013 года — под ключ, под вашу концепцию.</p>
+        <p class="form-note mt-m">Generation Yoga создаёт такие форматы с 2013 года — под ключ, под вашу концепцию.</p>
       </div>
     </section>
 
     <!-- ЧТО ПРЕДЛАГАЕМ -->
-    <section class="section on-paper-2" id="formaty" data-track-view="pricing">
+    <section class="section" id="formaty" data-track-view="pricing">
       <div class="wrap">
         <div class="section-head is-observe reveal">
           <span class="eyebrow">Что предлагаем</span>
-          <h2>Встроиться в ваше событие — или собрать его целиком</h2>
+          <h2>Встроиться в ваше событие — или <em>собрать целиком</em></h2>
         </div>
         <div class="cards cards--2 is-observe reveal">
           <article class="card">
-            <h3>PR-интеграция</h3>
-            <div class="price"><span class="tbd">цена «от» — уточняется</span></div>
-            <p>Практика-активность внутри вашего события: конференция, форум, презентация. Встраиваемся в тайминг и не ломаем программу.</p>
-            <span class="fine">Формат и длительность подбираем под сценарий события.</span>
+            <div class="card__body">
+              <span class="tag">Блок в программе</span>
+              <h3>PR-интеграция</h3>
+              <div class="price"><span class="tbd">цена «от» — уточняется</span></div>
+              <p>Практика-активность внутри вашего события: конференция, форум, презентация. Встраиваемся в тайминг и не ломаем программу.</p>
+              <span class="fine">Формат и длительность подбираем под сценарий события.</span>
+            </div>
           </article>
-          <article class="card card--anchor">
-            <h3>PR-событие под ключ</h3>
-            <div class="price" style="color: var(--paper)">по запросу</div>
-            <p>Самостоятельное мероприятие под вашу концепцию: локация, сценарий, ведущие, оформление — собираем целиком.</p>
-            <span class="fine" style="color: rgba(246,241,232,.6)">От камерной группы до 350 гостей.</span>
+          <article class="card">
+            <div class="card__body">
+              <span class="tag">Событие целиком</span>
+              <h3>PR-событие под ключ</h3>
+              <div class="price">по запросу</div>
+              <p>Самостоятельное мероприятие под вашу концепцию: локация, сценарий, ведущие, оформление — собираем целиком.</p>
+              <span class="fine">От камерной группы до 350 гостей.</span>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
     <!-- ЛОКАЦИИ И WOW-ФОРМАТЫ -->
-    <section class="section" id="wow">
+    <section class="section on-cream" id="wow">
       <div class="wrap">
         <div class="section-head is-observe reveal">
           <span class="eyebrow">Локации и wow-форматы</span>
-          <h2>То, чего гости ещё не&nbsp;видели</h2>
+          <h2>То, чего гости ещё <em>не видели</em></h2>
         </div>
         <div class="wow is-observe reveal">
           <div class="wow-item">
@@ -125,22 +121,22 @@
             <p>Практика на досках — самый фотогеничный формат в нашей линейке.</p>
           </div>
           <div class="wow-item">
-            <figure style="margin:0"><img src="assets/img/sound-hall.jpg" alt="Участники звукотерапии в зале на подушках" style="aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius)"></figure>
+            <img src="assets/img/sound-hall.jpg" alt="Участники звукотерапии в зале на подушках">
             <h4>Звукотерапия</h4>
             <p>Поющие чаши и гонги — в зале, на воде или в бассейне. Работает даже на скептиках.</p>
           </div>
           <div class="wow-item">
-            <figure style="margin:0"><img src="assets/img/yoga-orangery.jpg" alt="Гонг-практика в оранжерее среди зелени" style="aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius)"></figure>
+            <img src="assets/img/yoga-orangery.jpg" alt="Гонг-практика в оранжерее среди зелени">
             <h4>Оранжерея</h4>
             <p>Статусная локация, которая усиливает уровень события.</p>
           </div>
           <div class="wow-item">
-            <figure style="margin:0"><img src="assets/img/starry-dome.jpg" alt="Участники практики лежат под куполом звёздного неба" style="aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius)"></figure>
+            <img src="assets/img/starry-dome.jpg" alt="Участники практики лежат под куполом звёздного неба">
             <h4>Планетарий</h4>
             <p>Практика под куполом звёздного неба — редкий формат для Петербурга.</p>
           </div>
           <div class="wow-item">
-            <figure style="margin:0"><img src="assets/img/video-projection.jpg" alt="Вечерняя практика под видеопроекцией с мандалой" style="aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius)"></figure>
+            <img src="assets/img/video-projection.jpg" alt="Вечерняя практика под видеопроекцией с мандалой">
             <h4>Свечи и видеопроекция</h4>
             <p>Вечерний формат: свет и визуал работают на атмосферу и на кадр.</p>
           </div>
@@ -158,7 +154,7 @@
       <div class="wrap">
         <div class="section-head is-observe reveal">
           <span class="eyebrow">Почему это лучше классики</span>
-          <h2>Не фуршет и не приглашённый спикер</h2>
+          <h2>Не фуршет и не приглашённый <em>спикер</em></h2>
         </div>
         <div class="reasons is-observe reveal">
           <div class="reason"><span class="idx">01</span><div><h4>Запоминается</h4><p>Необычный формат оставляет эмоцию, о которой рассказывают, — выше отдача от события.</p></div></div>
@@ -174,26 +170,26 @@
       <div class="wrap">
         <div class="section-head is-observe reveal">
           <span class="eyebrow">Почему мы</span>
-          <h2>Редкие форматы и статусные площадки</h2>
+          <h2>Редкие форматы и <em>статусные площадки</em></h2>
         </div>
         <div class="reasons is-observe reveal">
-          <div class="reason"><span class="idx">·</span><div><h4>Wow-форматы</h4><p>SUP, гонги, оранжереи, планетарий — впечатления, которых нет у других.</p></div></div>
-          <div class="reason"><span class="idx">·</span><div><h4>Статусные площадки</h4><p>Локации, которые усиливают уровень вашего события.</p></div></div>
-          <div class="reason"><span class="idx">·</span><div><h4>Под вашу концепцию</h4><p>Формат и оформление адаптируем под идею события и брендинг.</p></div></div>
-          <div class="reason"><span class="idx">·</span><div><h4>Под ключ</h4><p>Берём организацию на себя: оборудование, ведущие, сценарий.</p></div></div>
+          <div class="reason"><span class="idx">01</span><div><h4>Wow-форматы</h4><p>SUP, гонги, оранжереи, планетарий — впечатления, которых нет у других.</p></div></div>
+          <div class="reason"><span class="idx">02</span><div><h4>Статусные площадки</h4><p>Локации, которые усиливают уровень вашего события.</p></div></div>
+          <div class="reason"><span class="idx">03</span><div><h4>Под вашу концепцию</h4><p>Формат и оформление адаптируем под идею события и брендинг.</p></div></div>
+          <div class="reason"><span class="idx">04</span><div><h4>Под ключ</h4><p>Берём организацию на себя: оборудование, ведущие, сценарий.</p></div></div>
         </div>
       </div>
     </section>
 
     <!-- НАМ ДОВЕРЯЮТ -->
-    <section class="section section--tight on-marine">
+    <section class="section on-ink">
       <div class="wrap is-observe reveal">
         <span class="eyebrow">Нам доверяют</span>
         <div class="facts mt-l">
           <div class="fact"><div class="k">13 лет</div><div class="v">опыта — работаем с 2013 года</div></div>
           <div class="fact"><div class="k">1000+</div><div class="v">проведённых мероприятий</div></div>
           <div class="fact"><div class="k">350</div><div class="v">гостей на одном событии</div></div>
-          <div class="fact"><div class="k">РФ и мир</div><div class="v">события по всей России и за рубежом</div></div>
+          <div class="fact"><div class="k k--word">РФ и мир</div><div class="v">события по всей России и за рубежом</div></div>
         </div>
         <div class="cases">
           <div class="case">
@@ -220,7 +216,7 @@
       <div class="wrap">
         <div class="section-head is-observe reveal">
           <span class="eyebrow">Как это работает</span>
-          <h2>От заявки до события — четыре шага</h2>
+          <h2>От заявки до события — <em>четыре шага</em></h2>
         </div>
         <div class="steps is-observe reveal">
           <div class="step"><h4>Заявка</h4><p>Рассказываете про событие: формат, дату, площадку, число гостей.</p></div>
@@ -232,13 +228,13 @@
     </section>
 
     <!-- ЛИД-МАГНИТ -->
-    <section class="section section--tight">
+    <section class="section section--tight on-cream">
       <div class="wrap">
         <form class="leadmag is-observe reveal" data-stub="pr-magnet">
           <div>
             <span class="eyebrow">Гайд · бесплатно</span>
             <h3 class="mt-s">7 идей йога-форматов, которые удивят гостей вашего события</h3>
-            <p style="color:#56524a">Короткий гайд с форматами, площадками и тем, как встроить практику в программу, не ломая тайминг.</p>
+            <p>Короткий гайд с форматами, площадками и тем, как встроить практику в программу, не ломая тайминг.</p>
           </div>
           <div class="form-fields">
             <div class="mini-form">
@@ -246,7 +242,7 @@
               <button class="btn" type="submit" data-cta="magnet:pr">Получить</button>
             </div>
             <label class="consent"><input type="checkbox" name="consent" required> <span>Даю согласие на обработку персональных данных (<a href="privacy.html">политика</a>)</span></label>
-            <p class="form-note">Пришлём сразу, без звонков.</p>
+            <p class="form-note mt-s">Пришлём сразу, без звонков.</p>
           </div>
           <div class="form-ok">Гайд отправлен — проверьте почту или Telegram. <span class="pill-note">(демо-режим прототипа)</span></div>
         </form>
@@ -254,11 +250,11 @@
     </section>
 
     <!-- FAQ -->
-    <section class="section on-paper-2">
+    <section class="section">
       <div class="wrap--narrow">
         <div class="section-head is-observe reveal" style="margin-bottom: 32px">
           <span class="eyebrow">Частые вопросы</span>
-          <h2>Что обычно спрашивают организаторы</h2>
+          <h2>Что обычно <em>спрашивают организаторы</em></h2>
         </div>
         <div class="faq is-observe reveal">
           <details>
@@ -288,8 +284,8 @@
     <!-- ЗАЯВКА -->
     <section class="section on-ink" id="zayavka">
       <div class="wrap--narrow">
-        <div class="is-observe reveal" style="text-align: center; margin-bottom: 36px">
-          <h2 style="font-size: var(--step-3)">Расскажите про ваше событие — предложим формат <em>и рассчитаем стоимость</em></h2>
+        <div class="is-observe reveal" style="margin-bottom: 36px">
+          <h2>Расскажите про ваше событие — предложим формат и <em>рассчитаем стоимость</em></h2>
         </div>
         <form class="is-observe reveal" data-stub="pr-lead" novalidate>
           <div class="form-fields">
@@ -320,13 +316,13 @@
             <input type="hidden" data-track="id" name="ref_id">
             <label class="consent"><input type="checkbox" name="consent" required> <span>Даю согласие на обработку персональных данных (<a href="privacy.html">политика</a>)</span></label>
             <div class="cta-row" style="margin-top: 24px; justify-content: space-between">
-              <button class="btn" type="submit" data-cta="form:pr-lead">Отправить заявку <span class="arw">→</span></button>
+              <button class="btn" type="submit" data-cta="form:pr-lead">Отправить заявку</button>
               <span class="form-note">Свяжемся в течение рабочего дня.</span>
             </div>
           </div>
           <div class="form-ok">
-            <h3 class="serif" style="font-size: var(--step-2)">Заявка отправлена</h3>
-            <p class="mt-s" style="opacity:.85">Спасибо! Свяжемся в течение рабочего дня и предложим формат под ваше событие. <span class="pill-note">(демо-режим прототипа)</span></p>
+            <h3>Заявка отправлена</h3>
+            <p class="mt-s">Спасибо! Свяжемся в течение рабочего дня и предложим формат под ваше событие. <span class="pill-note">(демо-режим прототипа)</span></p>
           </div>
         </form>
       </div>
@@ -336,12 +332,12 @@
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-top">
-        <a class="brand" href="index.html" style="color: var(--paper)"><b>GY</b><span style="color: rgba(246,241,232,.6)">для бизнеса</span></a>
+        <a class="brand" href="index.html" style="color: var(--paper)"><b>GY</b><span style="color: rgba(246,241,232,.7)">для бизнеса</span></a>
         <nav class="footer-nav" aria-label="Направления">
           <a href="hr.html">Забота о команде</a>
           <a href="pr.html">Событие для гостей</a>
           <a href="agency.html">Для агентств</a>
-          <a href="https://generation.yoga">generation.yoga</a>
+          <a class="is-site" href="https://generation.yoga">generation.yoga</a>
         </nav>
       </div>
       <div class="footer-bottom">
