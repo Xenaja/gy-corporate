@@ -9,31 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css">
-  <style>
-    /* Демо-полоса: оранжевый здесь — только кнопка, заливки блока нет. */
-    .demo-band .inner { display: grid; grid-template-columns: 1.15fr auto; gap: 28px 40px; align-items: center; }
-    .demo-band p { max-width: 62ch; margin-top: 14px; color: var(--body); }
-    @media (max-width: 900px) { .demo-band .inner { grid-template-columns: 1fr; } }
-
-    /* Конструктор события: 6 шагов-ячеек, списки собираются «плюсами». */
-    .builder { counter-reset: bstep; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    .b-step {
-      background: #fff; border: 1px solid var(--hairline); border-radius: var(--radius);
-      padding: clamp(24px, 3vw, 32px); transition: all .15s ease;
-    }
-    .b-step:hover { border-color: var(--accent); box-shadow: 0 10px 30px rgba(14,14,14,.1); }
-    .b-step::before {
-      counter-increment: bstep; content: "0" counter(bstep); display: block;
-      font-family: var(--font-ui); font-weight: 800; font-size: var(--t-h4);
-      letter-spacing: -0.02em; color: var(--accent);
-    }
-    .b-step h3 { font-size: var(--t-h4); margin-top: 10px; text-transform: uppercase; letter-spacing: -0.02em; }
-    .b-step .sub { display: block; font-size: var(--t-small); color: var(--muted); margin-top: 6px; }
-    .b-step ul { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
-    .b-step li { font-size: var(--t-small); line-height: 1.4; color: var(--body-card); padding-left: 18px; position: relative; }
-    .b-step li::before { content: "+"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
-    @media (max-width: 900px) { .builder { grid-template-columns: 1fr; } }
-  </style>
 </head>
 <body>
   <header class="site-header on-ink" data-hero-dark data-page="hr">
@@ -97,7 +72,7 @@
           </div>
         </div>
         <div class="rule mt-l"></div>
-        <p class="lede mt-l" style="max-width: 62ch">Выгорание — уже не HR-абстракция, а измеримая статья расходов: текучесть, больничные, падение вовлечённости. <em class="serif">Один удержанный специалист окупает годовую программу заботы о команде.</em></p>
+        <p class="lede lede--wide mt-l">Выгорание — уже не HR-абстракция, а измеримая статья расходов: текучесть, больничные, падение вовлечённости. <em class="serif">Один удержанный специалист окупает годовую программу заботы о команде.</em></p>
       </div>
     </section>
 
@@ -109,9 +84,9 @@
           <h2 class="h2--lg mt-s">Забота о сотрудниках — <em>новая корпоративная валюта</em></h2>
         </div>
         <div class="is-observe reveal" data-delay="1">
-          <p class="measure" style="font-size: var(--t-body-lg); color: var(--body)">Пока одни компании борются с выгоранием, лучшие работодатели мира делают wellness частью корпоративной культуры. Google, Salesforce, SAP, Nike и сотни международных компаний инвестируют в йогу, дыхательные практики и медитацию — они снижают уровень стресса, укрепляют команду, повышают вовлечённость и создают среду, в которой хочется работать.</p>
+          <p class="measure p-lg">Пока одни компании борются с выгоранием, лучшие работодатели мира делают wellness частью корпоративной культуры. Google, Salesforce, SAP, Nike и сотни международных компаний инвестируют в йогу, дыхательные практики и медитацию — они снижают уровень стресса, укрепляют команду, повышают вовлечённость и создают среду, в которой хочется работать.</p>
           <div class="rule mt-m"></div>
-          <p class="mt-m measure" style="font-size: var(--t-body-lg); color: var(--body)">Generation Yoga с 2013 года организует такие события под ключ. <em class="serif" style="color: var(--ink)">После них сотрудники возвращаются к работе с новыми силами, а компания получает гораздо больше, чем просто красивый корпоратив.</em></p>
+          <p class="mt-m measure p-lg">Generation Yoga с 2013 года организует такие события под ключ. <em class="serif serif--ink">После них сотрудники возвращаются к работе с новыми силами, а компания получает гораздо больше, чем просто красивый корпоратив.</em></p>
         </div>
       </div>
     </section>
@@ -175,7 +150,7 @@
               <p>Снять напряжение и вернуть команде ресурс.</p>
               <div class="rule--hair rule mt-s"></div>
               <span class="tag">Пример</span>
-              <p style="font-size: var(--t-small)">День восстановления со звукотерапией: практика глубокого расслабления под поющие чаши и живые инструменты. <span class="tbd">компания и детали кейса — после согласования</span></p>
+              <p class="p-sm">День восстановления со звукотерапией: практика глубокого расслабления под поющие чаши и живые инструменты. <span class="tbd">компания и детали кейса — после согласования</span></p>
             </div>
           </article>
           <article class="card">
@@ -185,7 +160,7 @@
               <p>Удивить, запомниться, подарить эмоцию.</p>
               <div class="rule--hair rule mt-s"></div>
               <span class="tag">Пример</span>
-              <p style="font-size: var(--t-small)">Вечернее событие под звёздным куполом — практика, саундхилинг и огненное шоу в финале. <span class="tbd">компания и детали кейса — после согласования</span></p>
+              <p class="p-sm">Вечернее событие под звёздным куполом — практика, саундхилинг и огненное шоу в финале. <span class="tbd">компания и детали кейса — после согласования</span></p>
             </div>
           </article>
           <article class="card">
@@ -195,7 +170,7 @@
               <p>Сплотить команду, почувствовать единство.</p>
               <div class="rule--hair rule mt-s"></div>
               <span class="tag">Пример</span>
-              <p style="font-size: var(--t-small)">«В одном ритме»: синхронная практика на городской крыше — вся команда двигается и дышит вместе. <span class="tbd">компания и детали кейса — после согласования</span></p>
+              <p class="p-sm">«В одном ритме»: синхронная практика на городской крыше — вся команда двигается и дышит вместе. <span class="tbd">компания и детали кейса — после согласования</span></p>
             </div>
           </article>
         </div>
@@ -309,14 +284,14 @@
         <div class="is-observe reveal">
           <span class="eyebrow">Почему мы</span>
           <h2 class="mt-s">Организацию берём <em>на себя</em></h2>
-          <div class="reasons" style="grid-template-columns: 1fr; margin-top: 28px">
+          <div class="reasons reasons--stack">
             <div class="reason"><span class="idx">01</span><div><h4>Думаем о людях</h4><p>Программа под уровень и состав, никого не ставим в неловкое положение.</p></div></div>
             <div class="reason"><span class="idx">02</span><div><h4>Адаптируем под команду</h4><p>Подберём формат и ведущего под вашу задачу.</p></div></div>
             <div class="reason"><span class="idx">03</span><div><h4>Под ключ</h4><p>Оборудование, ведущие, сценарий — всё привозим и организуем сами.</p></div></div>
           </div>
         </div>
         <aside class="is-observe reveal" data-delay="1">
-          <div class="leadmag" style="grid-template-columns: 1fr">
+          <div class="leadmag leadmag--stack">
             <div>
               <span class="eyebrow">Отбор практик и ведущих</span>
               <h3 class="mt-s">Все практики и ведущие проходят <em>отбор</em></h3>
@@ -371,7 +346,7 @@
     <!-- FAQ -->
     <section class="section on-cream">
       <div class="wrap--narrow">
-        <div class="section-head is-observe reveal" style="margin-bottom: 32px">
+        <div class="section-head section-head--tight is-observe reveal">
           <span class="eyebrow">Частые вопросы</span>
           <h2>Что обычно <em>спрашивает HR</em></h2>
         </div>
@@ -403,8 +378,8 @@
     <!-- ЗАЯВКА -->
     <section class="section on-ink" id="zayavka">
       <div class="wrap--narrow">
-        <div class="is-observe reveal" style="margin-bottom: 36px">
-          <div class="deadline" style="margin-bottom: 24px">
+        <div class="form-head is-observe reveal">
+          <div class="deadline">
             <span class="dot"></span>
             Сентябрь — лучшее окно для дня заботы: команда возвращается из отпусков. Слоты бронируем до 15 августа.
           </div>
@@ -435,7 +410,7 @@
             <input type="hidden" data-track="utm_campaign" name="utm_campaign">
             <input type="hidden" data-track="id" name="ref_id">
             <label class="consent"><input type="checkbox" name="consent" required> <span>Даю согласие на обработку персональных данных (<a href="privacy.html">политика</a>)</span></label>
-            <div class="cta-row" style="margin-top: 24px; justify-content: space-between">
+            <div class="cta-row cta-row--split">
               <button class="btn" type="submit" data-cta="form:hr-lead">Отправить заявку</button>
               <span class="form-note">Свяжемся в течение рабочего дня.</span>
             </div>
@@ -452,7 +427,7 @@
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-top">
-        <a class="brand" href="index.html" style="color: var(--paper)"><b>GY</b><span style="color: rgba(246,241,232,.7)">для бизнеса</span></a>
+        <a class="brand" href="index.html"><b>GY</b><span>для бизнеса</span></a>
         <nav class="footer-nav" aria-label="Направления">
           <a href="hr.html">Забота о команде</a>
           <a href="pr.html">Событие для гостей</a>

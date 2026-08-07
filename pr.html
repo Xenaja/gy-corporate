@@ -9,21 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css">
-  <style>
-    .hero__media img { object-position: center 38%; }
-
-    /* Заход: крупная строка-утверждение. Не заголовок — обычный регистр. */
-    .statement { font-size: clamp(1.3rem, 1rem + 1.4vw, 1.75rem); line-height: 1.35; max-width: 30ch; font-weight: 400; }
-
-    /* wow-форматы: плитка локаций */
-    .wow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    .wow-item { display: flex; flex-direction: column; gap: 14px; }
-    .wow-item img { aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); width: 100%; }
-    .wow-item h4 { text-transform: uppercase; letter-spacing: -0.02em; }
-    .wow-item p { font-size: var(--t-small); line-height: 1.45; color: var(--body); }
-    @media (max-width: 900px) { .wow { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .wow { grid-template-columns: 1fr; } }
-  </style>
 </head>
 <body>
   <header class="site-header on-ink" data-hero-dark data-page="pr">
@@ -43,7 +28,7 @@
 
   <main>
     <!-- ГЕРОЙ -->
-    <section class="hero">
+    <section class="hero hero--pr">
       <div class="hero__media">
         <img src="assets/img/rooftop-event.jpg" alt="Участники события на городской крыше с гирляндами">
       </div>
@@ -63,7 +48,7 @@
       <div class="wrap split is-observe reveal">
         <div>
           <span class="eyebrow">Заход</span>
-          <p class="statement mt-m">Гости устали от стандартных активностей. Практика-перезагрузка или необычный wow-формат <em class="serif" style="color: var(--accent)">выделяют ваше событие</em> и создают эмоцию, о которой рассказывают.</p>
+          <p class="statement mt-m">Гости устали от стандартных активностей. Практика-перезагрузка или необычный wow-формат <em class="serif serif--accent">выделяют ваше событие</em> и создают эмоцию, о которой рассказывают.</p>
         </div>
       </div>
     </section>
@@ -72,7 +57,7 @@
     <section class="section section--tight on-ink">
       <div class="wrap is-observe reveal">
         <span class="eyebrow">Мировой тренд</span>
-        <p class="lede mt-m" style="max-width: 62ch">Йога, медитация и практики восстановления давно вошли в программы событий мировых брендов: Google, Salesforce, SAP, Nike делают wellness частью своей культуры и мероприятий. <em class="serif">Практика в программе ставит ваше событие в один ряд с лучшими.</em></p>
+        <p class="lede lede--wide mt-m">Йога, медитация и практики восстановления давно вошли в программы событий мировых брендов: Google, Salesforce, SAP, Nike делают wellness частью своей культуры и мероприятий. <em class="serif">Практика в программе ставит ваше событие в один ряд с лучшими.</em></p>
         <p class="form-note mt-m">Generation Yoga создаёт такие форматы с 2013 года — под ключ, под вашу концепцию.</p>
       </div>
     </section>
@@ -252,7 +237,7 @@
     <!-- FAQ -->
     <section class="section">
       <div class="wrap--narrow">
-        <div class="section-head is-observe reveal" style="margin-bottom: 32px">
+        <div class="section-head section-head--tight is-observe reveal">
           <span class="eyebrow">Частые вопросы</span>
           <h2>Что обычно <em>спрашивают организаторы</em></h2>
         </div>
@@ -284,7 +269,7 @@
     <!-- ЗАЯВКА -->
     <section class="section on-ink" id="zayavka">
       <div class="wrap--narrow">
-        <div class="is-observe reveal" style="margin-bottom: 36px">
+        <div class="form-head is-observe reveal">
           <h2>Расскажите про ваше событие — предложим формат и <em>рассчитаем стоимость</em></h2>
         </div>
         <form class="is-observe reveal" data-stub="pr-lead" novalidate>
@@ -315,7 +300,7 @@
             <input type="hidden" data-track="utm_campaign" name="utm_campaign">
             <input type="hidden" data-track="id" name="ref_id">
             <label class="consent"><input type="checkbox" name="consent" required> <span>Даю согласие на обработку персональных данных (<a href="privacy.html">политика</a>)</span></label>
-            <div class="cta-row" style="margin-top: 24px; justify-content: space-between">
+            <div class="cta-row cta-row--split">
               <button class="btn" type="submit" data-cta="form:pr-lead">Отправить заявку</button>
               <span class="form-note">Свяжемся в течение рабочего дня.</span>
             </div>
@@ -332,7 +317,7 @@
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-top">
-        <a class="brand" href="index.html" style="color: var(--paper)"><b>GY</b><span style="color: rgba(246,241,232,.7)">для бизнеса</span></a>
+        <a class="brand" href="index.html"><b>GY</b><span>для бизнеса</span></a>
         <nav class="footer-nav" aria-label="Направления">
           <a href="hr.html">Забота о команде</a>
           <a href="pr.html">Событие для гостей</a>

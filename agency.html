@@ -9,29 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css">
-  <style>
-    .ag-hero h1 .keep { white-space: nowrap; } /* «wow-модуль» не рвём переносом */
-
-    /* Каталог форматов — три белые карточки-колонки. */
-    .catalog { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    .cat-col {
-      background: #fff; border: 1px solid var(--hairline); border-radius: var(--radius);
-      padding: clamp(24px, 3vw, 32px); transition: all .15s ease;
-    }
-    .cat-col:hover { border-color: var(--accent); box-shadow: 0 10px 30px rgba(14,14,14,.1); }
-    .cat-col h3 { font-size: var(--t-h4); margin-top: 12px; text-transform: uppercase; letter-spacing: -0.02em; }
-    .cat-col ul { list-style: none; margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
-    .cat-col li { font-size: var(--t-small); line-height: 1.45; padding-left: 18px; position: relative; color: var(--body-card); }
-    .cat-col li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
-    @media (max-width: 900px) { .catalog { grid-template-columns: 1fr; } }
-
-    /* Условия партнёрства */
-    .terms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    .term { border-top: 2px solid var(--accent); padding-top: 18px; }
-    .term h4 { margin-bottom: 8px; }
-    .term p { font-size: var(--t-small); line-height: 1.45; }
-    @media (max-width: 900px) { .terms { grid-template-columns: 1fr; } }
-  </style>
 </head>
 <body>
   <header class="site-header on-ink" data-hero-dark data-page="agency">
@@ -98,7 +75,7 @@
     <section class="section section--tight on-ink">
       <div class="wrap is-observe reveal">
         <span class="eyebrow">Аргумент для вашего клиента</span>
-        <p class="lede mt-m" style="max-width: 62ch">Корпоративный wellness — уже не эксперимент, а стандарт лучших работодателей мира: Google, Salesforce, SAP, Nike и сотни компаний инвестируют в йогу, медитацию и программы восстановления. <em class="serif">Предлагая клиенту wellness-модуль, вы продаёте мировой тренд, а не рискованную новинку.</em></p>
+        <p class="lede lede--wide mt-m">Корпоративный wellness — уже не эксперимент, а стандарт лучших работодателей мира: Google, Salesforce, SAP, Nike и сотни компаний инвестируют в йогу, медитацию и программы восстановления. <em class="serif">Предлагая клиенту wellness-модуль, вы продаёте мировой тренд, а не рискованную новинку.</em></p>
       </div>
     </section>
 
@@ -168,7 +145,7 @@
           </div>
         </div>
 
-        <div class="steps is-observe reveal" style="margin-top: clamp(44px, 6vw, 72px)">
+        <div class="steps steps--spaced is-observe reveal">
           <div class="step"><h4>Запрос</h4><p>Присылаете вводные: задача клиента, дата, площадка, бюджет.</p></div>
           <div class="step"><h4>Расчёт</h4><p>Возвращаем формат и смету — в виде, который можно показать клиенту.</p></div>
           <div class="step"><h4>Согласование</h4><p>Ваш менеджер согласует с клиентом. Общаемся так, как удобно агентству.</p></div>
@@ -197,7 +174,7 @@
           <div class="form-ok">Каталог отправлен — проверьте почту или Telegram. <span class="pill-note">(демо-режим прототипа)</span></div>
         </form>
 
-        <div class="leadmag is-observe reveal" data-delay="1" style="margin-top: 22px">
+        <div class="leadmag is-observe reveal" data-delay="1">
           <div>
             <span class="eyebrow">Смотрины подрядчика</span>
             <h3 class="mt-s">Приходите на наше <em>открытое событие</em></h3>
@@ -214,7 +191,7 @@
     <!-- FAQ -->
     <section class="section on-cream">
       <div class="wrap--narrow">
-        <div class="section-head is-observe reveal" style="margin-bottom: 32px">
+        <div class="section-head section-head--tight is-observe reveal">
           <span class="eyebrow">Частые вопросы</span>
           <h2>Что спрашивают <em>менеджеры агентств</em></h2>
         </div>
@@ -246,7 +223,7 @@
     <!-- ЗАЯВКА -->
     <section class="section on-ink" id="zayavka">
       <div class="wrap--narrow">
-        <div class="is-observe reveal" style="margin-bottom: 36px">
+        <div class="form-head is-observe reveal">
           <h2>Напишите про ваш проект — <em>соберём предложение</em></h2>
           <p class="lede mt-m">Или запросите каталог форматов с условиями — пришлём файлом, без звонков.</p>
         </div>
@@ -274,7 +251,7 @@
             <input type="hidden" data-track="utm_campaign" name="utm_campaign">
             <input type="hidden" data-track="id" name="ref_id">
             <label class="consent"><input type="checkbox" name="consent" required> <span>Даю согласие на обработку персональных данных (<a href="privacy.html">политика</a>)</span></label>
-            <div class="cta-row" style="margin-top: 24px; justify-content: space-between">
+            <div class="cta-row cta-row--split">
               <button class="btn" type="submit" data-cta="form:agency-lead">Отправить запрос</button>
               <span class="form-note">Свяжемся в течение рабочего дня.</span>
             </div>
@@ -291,7 +268,7 @@
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-top">
-        <a class="brand" href="index.html" style="color: var(--paper)"><b>GY</b><span style="color: rgba(246,241,232,.7)">для бизнеса</span></a>
+        <a class="brand" href="index.html"><b>GY</b><span>для бизнеса</span></a>
         <nav class="footer-nav" aria-label="Направления">
           <a href="hr.html">Забота о команде</a>
           <a href="pr.html">Событие для гостей</a>

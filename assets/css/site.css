@@ -98,6 +98,9 @@ h1 em, h2 em, h3 em, h1 .serif, h2 .serif, h3 .serif {
 }
 /* В абзаце курсив — тем же цветом, что и текст: оранжевый там спорит с кнопкой. */
 p em, p .serif, li em { color: inherit; font-size: 1.02em; }
+/* Точечные исключения. Селектор с `p` — чтобы перебить правило выше по специфичности. */
+p .serif--ink { color: var(--ink); }
+p .serif--accent { color: var(--accent); }
 
 .eyebrow {
   display: inline-flex; align-items: center; gap: 14px;
@@ -136,6 +139,8 @@ p em, p .serif, li em { color: inherit; font-size: 1.02em; }
 
 .mt-s { margin-top: 14px; } .mt-m { margin-top: 26px; } .mt-l { margin-top: 44px; }
 .cta-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+/* Футер формы: кнопка слева, «свяжемся в течение дня» справа. */
+.cta-row--split { margin-top: 24px; justify-content: space-between; }
 
 /* Разделитель внутри колонки текста (не имитирует границу секции). */
 .rule { height: 2px; background: var(--accent); width: 100%; }
@@ -314,6 +319,8 @@ a.card:hover, .card:hover { border-color: var(--accent); box-shadow: 0 10px 30px
 .reason h4 { margin-bottom: 8px; }
 .reason p { font-size: var(--t-cap); line-height: 1.45; color: var(--body); }
 .on-ink .reason p { color: var(--on-ink); }
+/* Список причин в узкой колонке — в один столбец. */
+.reasons--stack { grid-template-columns: 1fr; margin-top: 28px; }
 
 .steps { counter-reset: step; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .step { position: relative; padding-top: 34px; }
@@ -326,6 +333,8 @@ a.card:hover, .card:hover { border-color: var(--accent); box-shadow: 0 10px 30px
 .step h4 { margin-bottom: 8px; }
 .step p { font-size: var(--t-small); line-height: 1.45; color: var(--body); }
 .on-ink .step p { color: var(--on-ink); }
+/* Шаги под другим блоком той же секции — с увеличенным отступом сверху. */
+.steps--spaced { margin-top: clamp(44px, 6vw, 72px); }
 
 /* --- кейсы --------------------------------------------------------------- */
 .cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(22px, 3vw, 40px); margin-top: clamp(36px, 5vw, 56px); }
@@ -372,6 +381,8 @@ a.card:hover, .card:hover { border-color: var(--accent); box-shadow: 0 10px 30px
 .leadmag p { color: var(--body); font-size: var(--t-cap); line-height: 1.45; }
 .leadmag .mini-form { display: flex; gap: 10px; flex-wrap: wrap; }
 .leadmag input { flex: 1 1 200px; }
+.leadmag--stack { grid-template-columns: 1fr; }
+.leadmag + .leadmag { margin-top: 22px; }
 
 /* --- формы --------------------------------------------------------------- */
 .field { display: flex; flex-direction: column; gap: 8px; }
@@ -427,6 +438,8 @@ input:focus, select:focus, textarea:focus { border-color: var(--accent); outline
 
 /* --- футер --------------------------------------------------------------- */
 .site-footer { background: var(--ink); color: var(--on-ink-3); padding-block: clamp(40px, 6vw, 56px); }
+.site-footer .brand { color: var(--paper); }
+.site-footer .brand span { color: rgba(246,241,232,.7); }
 .footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
 .footer-nav { display: flex; gap: 28px; flex-wrap: wrap; }
 .footer-nav a { color: rgba(246,241,232,.8); font-size: .9375rem; font-weight: 700; }
@@ -438,6 +451,10 @@ input:focus, select:focus, textarea:focus { border-color: var(--accent); outline
   display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
   font-size: var(--t-small); line-height: 1.5;
 }
+.footer-bottom a { color: rgba(246,241,232,.8); }
+.footer-bottom a:hover { color: var(--accent); }
+/* Служебная страница: футер без верхней линии и отступа — над ним ничего нет. */
+.footer-bottom--bare { margin-top: 0; padding-top: 0; border-top: none; }
 
 /* --- заглушки прототипа -------------------------------------------------- */
 /* .tbd — значение, которое команда ещё не утвердила. Намеренно заметно. */
@@ -487,6 +504,91 @@ input:focus, select:focus, textarea:focus { border-color: var(--accent); outline
 .reveal[data-delay="1"] { transition-delay: .08s; }
 .reveal[data-delay="2"] { transition-delay: .16s; }
 .reveal[data-delay="3"] { transition-delay: .24s; }
+
+/* =========================================================================
+   Утилиты вместо инлайновых style=
+   Инлайн перебивал и медиазапросы, и компонентные правила. Поэтому утилиты
+   стоят после компонентов, а у текстовых в селекторе есть элемент: иначе
+   `.p-sm` (0,1,0) проигрывает `.card p` (0,1,1) и кегль не применяется.
+   ========================================================================= */
+p.p-lg, .p-lg { font-size: var(--t-body-lg); color: var(--body); }
+.on-ink p.p-lg, .on-ink .p-lg { color: var(--on-ink); }
+p.p-sm, .p-sm { font-size: var(--t-small); }
+.lede--wide { max-width: 62ch; }
+.section-head--tight { margin-bottom: 32px; }
+/* Шапка блока перед формой заявки. */
+.form-head { margin-bottom: 36px; }
+.form-head .deadline { margin-bottom: 24px; }
+
+/* =========================================================================
+   Страничные блоки
+   Компоненты, которые живут на одной странице. Держим здесь, а не в <style>
+   страницы: так они кэшируются вместе с системой и не разъезжаются с ней.
+   ========================================================================= */
+
+/* --- /hr: демо-полоса и конструктор события ------------------------------ */
+/* Оранжевый здесь — только кнопка, заливки блока нет. */
+.demo-band .inner { display: grid; grid-template-columns: 1.15fr auto; gap: 28px 40px; align-items: center; }
+.demo-band p { max-width: 62ch; margin-top: 14px; color: var(--body); }
+@media (max-width: 900px) { .demo-band .inner { grid-template-columns: 1fr; } }
+
+.builder { counter-reset: bstep; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.b-step {
+  background: #fff; border: 1px solid var(--hairline); border-radius: var(--radius);
+  padding: clamp(24px, 3vw, 32px); transition: all .15s ease;
+}
+.b-step:hover { border-color: var(--accent); box-shadow: 0 10px 30px rgba(14,14,14,.1); }
+.b-step::before {
+  counter-increment: bstep; content: "0" counter(bstep); display: block;
+  font-family: var(--font-ui); font-weight: 800; font-size: var(--t-h4);
+  letter-spacing: -0.02em; color: var(--accent);
+}
+.b-step h3 { font-size: var(--t-h4); margin-top: 10px; text-transform: uppercase; letter-spacing: -0.02em; }
+.b-step .sub { display: block; font-size: var(--t-small); color: var(--muted); margin-top: 6px; }
+.b-step ul { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+.b-step li { font-size: var(--t-small); line-height: 1.4; color: var(--body-card); padding-left: 18px; position: relative; }
+.b-step li::before { content: "+"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
+@media (max-width: 900px) { .builder { grid-template-columns: 1fr; } }
+
+/* --- /pr: заход и wow-форматы -------------------------------------------- */
+/* Скоуп обязателен: без .hero--pr правило сдвинуло бы кадр во всех героях. */
+.hero--pr .hero__media img { object-position: center 38%; }
+/* Крупная строка-утверждение. Не заголовок — обычный регистр. */
+.statement { font-size: clamp(1.3rem, 1rem + 1.4vw, 1.75rem); line-height: 1.35; max-width: 30ch; font-weight: 400; }
+.wow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.wow-item { display: flex; flex-direction: column; gap: 14px; }
+.wow-item img { aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); width: 100%; }
+.wow-item h4 { text-transform: uppercase; letter-spacing: -0.02em; }
+.wow-item p { font-size: var(--t-small); line-height: 1.45; color: var(--body); }
+@media (max-width: 900px) { .wow { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .wow { grid-template-columns: 1fr; } }
+
+/* --- /agency: каталог форматов и условия партнёрства ---------------------- */
+.ag-hero h1 .keep { white-space: nowrap; } /* «wow-модуль» не рвём переносом */
+
+.catalog { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.cat-col {
+  background: #fff; border: 1px solid var(--hairline); border-radius: var(--radius);
+  padding: clamp(24px, 3vw, 32px); transition: all .15s ease;
+}
+.cat-col:hover { border-color: var(--accent); box-shadow: 0 10px 30px rgba(14,14,14,.1); }
+.cat-col h3 { font-size: var(--t-h4); margin-top: 12px; text-transform: uppercase; letter-spacing: -0.02em; }
+.cat-col ul { list-style: none; margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+.cat-col li { font-size: var(--t-small); line-height: 1.45; padding-left: 18px; position: relative; color: var(--body-card); }
+.cat-col li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+@media (max-width: 900px) { .catalog { grid-template-columns: 1fr; } }
+
+.terms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.term { border-top: 2px solid var(--accent); padding-top: 18px; }
+.term h4 { margin-bottom: 8px; }
+.term p { font-size: var(--t-small); line-height: 1.45; }
+@media (max-width: 900px) { .terms { grid-template-columns: 1fr; } }
+
+/* --- /privacy: текст документа -------------------------------------------- */
+.policy h1 { font-size: var(--t-h2); line-height: .95; }
+.policy h2 { font-size: var(--t-h4); margin-top: 36px; }
+.policy p, .policy li { color: var(--body); margin-top: 12px; font-size: var(--t-cap); line-height: 1.5; }
+.policy ul { margin: 8px 0 0 20px; }
 
 /* =========================================================================
    Адаптив
