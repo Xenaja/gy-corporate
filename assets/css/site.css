@@ -262,6 +262,19 @@ p .serif--accent { color: var(--accent); }
 .hero .brand { color: var(--paper); }
 .hero .brand span { color: var(--on-ink-2); }
 
+/* Первый экран = герой + полоса доверия ровно в высоту окна. Полоса берёт
+   свою высоту, герой забирает остаток — поэтому цифры никогда не обрубает
+   нижней кромкой (при 92vh в экран влезала половина строки доверия, а
+   обрубленная цифра читается как поломка). Магических чисел нет: сколько
+   строк ни перенесётся в подписях, расчёт остаётся верным.
+   Обёртка нужна только на главной: там шапка живёт внутри героя, поэтому
+   первый экран равен окну. На остальных страницах липкая шапка съедает верх,
+   и полоса доверия и так уходит целиком под сгиб — резать нечего. */
+@media (min-width: 901px) {
+  .first-screen { min-height: 100vh; display: flex; flex-direction: column; }
+  .first-screen .hero { flex: 1 1 auto; min-height: 560px; }
+}
+
 /* --- полоса доверия ----------------------------------------------------- */
 /* Цифры и подписи никогда не лежат поверх фото — только на ровном ink. */
 .trust { background: var(--ink); color: var(--paper); border-top: 1px solid var(--hairline-on-ink); }
@@ -300,7 +313,10 @@ p .serif--accent { color: var(--accent); }
   transition: all .15s ease;
 }
 a.card:hover, .card:hover { border-color: var(--accent); box-shadow: 0 10px 30px rgba(14,14,14,.1); color: var(--ink); }
-.card__photo { height: 170px; flex-shrink: 0; overflow: hidden; }
+/* 240px вместо 170: на узкой шапке кадр резался в полоску, люди в кадре
+   теряли головы или ноги. 240 при ширине колонки ~340 — это почти 3:2,
+   то есть родная пропорция съёмки, и кроп почти не работает. */
+.card__photo { height: 240px; flex-shrink: 0; overflow: hidden; }
 .card__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; }
 .card__body { display: flex; flex-direction: column; gap: 14px; padding: 28px 32px 32px; flex: 1; }
 .tag { font-size: var(--t-eyebrow); font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
@@ -370,6 +386,23 @@ a.card:hover, .card:hover { border-color: var(--accent); box-shadow: 0 10px 30px
   color: var(--paper);
 }
 .figure--tall { height: 260px; }
+
+/* Колонка с заголовком и фото добирает высоту соседней текстовой колонки:
+   фото тянется до её нижней кромки, и блок заканчивается одной линией.
+   margin-top задан здесь, а не утилитой в разметке, — иначе воздух над фото
+   пришлось бы держать в двух местах. */
+.split--fill .figure--tall { margin-top: 52px; }
+@media (min-width: 901px) {
+  .split--fill { align-items: stretch; }
+  .split--fill > div { display: flex; flex-direction: column; }
+  /* min-height ниже обычных 260: иначе высоту ряда задаёт фото, и левая
+     колонка снова уезжает ниже правой. Пусть ряд задаёт текст, а фото
+     добирает ровно остаток. */
+  .split--fill .figure--tall { height: auto; min-height: 180px; flex: 1 1 auto; }
+  /* Текст справа распределяется на всю высоту ряда — тогда обе колонки
+     заканчиваются одной линией, а фото не приходится ужимать в полоску. */
+  .split--fill > div:last-child { justify-content: space-between; }
+}
 
 /* Галерея кадров: ровная плитка 4:3, фото говорят сами — без подписей и рамок.
    Живёт на главной, но компонент общий: можно поставить на любую страницу.
@@ -493,7 +526,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--accent); outline
 }
 .ph--wide { aspect-ratio: 16 / 9; }
 /* шапка карточки: та же высота, что и у фото-шапки */
-.ph--card { aspect-ratio: auto; height: 170px; flex-shrink: 0; border: none; border-bottom: 1px dashed rgba(14,14,14,.25); border-radius: 0; }
+.ph--card { aspect-ratio: auto; height: 240px; flex-shrink: 0; border: none; border-bottom: 1px dashed rgba(14,14,14,.25); border-radius: 0; }
 .ph--tall { aspect-ratio: auto; height: 260px; }
 /* фон героя, пока нет кадра */
 .ph--hero {

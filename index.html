@@ -12,6 +12,8 @@
 </head>
 <body>
   <main>
+    <!-- ПЕРВЫЙ ЭКРАН: герой + полоса доверия, ровно в высоту окна -->
+    <div class="first-screen">
     <!-- ГЕРОЙ -->
     <section class="hero" id="hero">
       <div class="hero__media">
@@ -47,6 +49,7 @@
         </div>
       </div>
     </section>
+    </div>
 
     <!-- РАЗВИЛКА -->
     <section class="section" id="choose">
@@ -92,11 +95,11 @@
 
     <!-- МИРОВОЙ ТРЕНД -->
     <section class="section on-cream" id="trend">
-      <div class="wrap split">
+      <div class="wrap split split--fill">
         <div class="is-observe reveal">
           <span class="eyebrow">Мировой тренд</span>
           <h2 class="h2--lg mt-s">Корпоративный wellness — уже не бонус, а <em>стандарт лучших работодателей мира</em></h2>
-          <figure class="figure figure--tall mt-l"><img src="assets/img/relax-closeup.jpg" alt="Крупный план: участницы практики с закрытыми глазами в намасте"></figure>
+          <figure class="figure figure--tall"><img src="assets/img/relax-closeup.jpg" alt="Крупный план: участницы практики с закрытыми глазами в намасте"></figure>
         </div>
 
         <div class="is-observe reveal" data-delay="1">
@@ -129,6 +132,26 @@
           <figure><img src="assets/img/planetarium-circle.jpg" alt="Музыканты в светящемся круге под звёздным куполом" loading="lazy"></figure>
           <figure><img src="assets/img/festival-tent.jpg" alt="Команда Generation Yoga у шатра на городском фестивале" loading="lazy"></figure>
           <figure><img src="assets/img/cozy-talk.jpg" alt="Камерная встреча: участницы слушают ведущую" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ФИНАЛЬНЫЙ ВЫБОР -->
+    <section class="section on-cream" id="final">
+      <div class="wrap--narrow">
+        <div class="section-head section-head--tight is-observe reveal">
+          <span class="eyebrow">Куда дальше</span>
+          <h2>Смотреть подробнее — под <em>вашу задачу</em></h2>
+          <p>Для HR и руководителей, для PR и маркетинга или для ивент-агентства.</p>
+        </div>
+        <div class="cta-row is-observe reveal">
+          <a class="btn btn--ghost" href="hr.html" data-cta="final:hr">Забота о команде</a>
+          <a class="btn btn--ghost" href="pr.html" data-cta="final:pr">Событие для гостей</a>
+          <a class="btn btn--ghost" href="agency.html" data-cta="final:agency">Для агентств</a>
+        </div>
+        <div class="cta-row mt-l is-observe reveal" data-delay="1">
+          <a class="btn" href="hr.html#zayavka" data-cta="final:manager">Связаться с менеджером</a>
+          <span class="form-note">Ответим в течение рабочего дня. <span class="tbd">прямой контакт менеджера — уточняется</span></span>
         </div>
       </div>
     </section>
