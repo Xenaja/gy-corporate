@@ -111,7 +111,85 @@
     });
   });
 
-  /* ---- 6. Хедер меняет фон при скролле над тёмным героем -------------- */
+  /* ---- 6. Модальное окно заявки --------------------------------------- */
+  /* Нативный <dialog>: Esc, подложку и возврат фокуса делает браузер.
+     Наше дело — открыть, закрыть по клику мимо окна и вернуть фокус кнопке. */
+  var lastOpener = null;
+
+  document.querySelectorAll("[data-modal-open]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var dlg = document.getElementById(btn.getAttribute("data-modal-open"));
+      if (!dlg) return;
+      lastOpener = btn;
+      if (typeof dlg.showModal === "function") dlg.showModal();
+      else dlg.setAttribute("open", "");
+      emit("modal_open", { modal: dlg.id });
+      var first = dlg.querySelector("input:not([type=hidden]):not([tabindex='-1'])");
+      if (first) first.focus();
+    });
+  });
+
+  document.querySelectorAll("dialog.modal").forEach(function (dlg) {
+    dlg.querySelectorAll("[data-modal-close]").forEach(function (x) {
+      x.addEventListener("click", function () { dlg.close(); });
+    });
+    // Клик по подложке приходит на сам dialog: тело окна свои клики забирает.
+    dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener("close", function () { if (lastOpener) lastOpener.focus(); });
+  });
+
+  /* ---- 7. Заявка -> Telegram через воркер ------------------------------ */
+  /* Пока адрес пуст, форма ведёт себя как остальной прототип: показывает
+     экран «отправлено» и ничего никуда не шлёт. Как только воркер задеплоен
+     (worker/lead-to-telegram.js) — вписать сюда его URL, и заявки пойдут
+     в Telegram. Токен бота живёт в секретах воркера и на страницу не попадает. */
+  var LEAD_ENDPOINT = "";
+
+  document.querySelectorAll("form[data-lead]").forEach(function (form) {
+    var errBox = form.querySelector(".form-error");
+    var okBox = form.querySelector(".form-ok");
+    var fields = form.querySelector(".form-fields");
+    var submit = form.querySelector("button[type=submit]");
+
+    // Плашку «демо-режим» показываем только пока отправка действительно фиктивная.
+    if (LEAD_ENDPOINT && okBox) {
+      okBox.querySelectorAll(".pill-note").forEach(function (n) { n.remove(); });
+    }
+
+    function showOk() {
+      emit("form_submit", { form: form.getAttribute("data-lead") });
+      if (fields) fields.style.display = "none";
+      if (okBox) { okBox.classList.add("show"); okBox.setAttribute("tabindex", "-1"); okBox.focus(); }
+    }
+
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      if (errBox) errBox.textContent = "";
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      var payload = { form: form.getAttribute("data-lead"), page: location.pathname };
+      new FormData(form).forEach(function (v, k) { payload[k] = v; });
+
+      if (!LEAD_ENDPOINT) { showOk(); return; }
+
+      var label = submit ? submit.textContent : "";
+      if (submit) { submit.disabled = true; submit.textContent = "Отправляем…"; }
+
+      fetch(LEAD_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      }).then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        showOk();
+      }).catch(function () {
+        if (errBox) errBox.textContent = "Не получилось отправить — проверьте связь и попробуйте ещё раз.";
+        if (submit) { submit.disabled = false; submit.textContent = label; }
+      });
+    });
+  });
+
+  /* ---- 8. Хедер меняет фон при скролле над тёмным героем -------------- */
   var header = document.querySelector(".site-header[data-hero-dark]");
   if (header) {
     var hero = document.querySelector(".hero");

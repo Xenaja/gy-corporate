@@ -15,7 +15,7 @@
     <!-- ПЕРВЫЙ ЭКРАН: герой + полоса доверия, ровно в высоту окна -->
     <div class="first-screen">
     <!-- ГЕРОЙ -->
-    <section class="hero" id="hero">
+    <section class="hero hero--home" id="hero">
       <div class="hero__media">
         <img src="assets/img/yoga-sunset-wide.jpg" alt="Групповая йога-практика на набережной у залива на закате">
       </div>
@@ -150,8 +150,8 @@
           <a class="btn btn--ghost" href="agency.html" data-cta="final:agency">Для агентств</a>
         </div>
         <div class="cta-row mt-l is-observe reveal" data-delay="1">
-          <a class="btn" href="hr.html#zayavka" data-cta="final:manager">Связаться с менеджером</a>
-          <span class="form-note">Ответим в течение рабочего дня. <span class="tbd">прямой контакт менеджера — уточняется</span></span>
+          <button class="btn" type="button" data-modal-open="manager" data-cta="final:manager">Связаться с менеджером</button>
+          <span class="form-note">Ответим в течение рабочего дня.</span>
         </div>
       </div>
     </section>
@@ -174,6 +174,46 @@
       </div>
     </div>
   </footer>
+
+  <!-- ЗАЯВКА МЕНЕДЖЕРУ -->
+  <dialog class="modal" id="manager" aria-labelledby="manager-title">
+    <div class="modal__body">
+      <button class="modal__close" type="button" data-modal-close aria-label="Закрыть">✕</button>
+      <form data-lead="manager" novalidate>
+        <div class="form-fields">
+          <span class="eyebrow">Заявка</span>
+          <h3 class="mt-s" id="manager-title">Связаться с <em class="serif serif--accent">менеджером</em></h3>
+          <p class="form-note mt-s">Расскажите в двух словах о задаче — ответим в течение рабочего дня.</p>
+
+          <div class="field">
+            <label for="m-name">Как вас зовут</label>
+            <input id="m-name" name="name" type="text" autocomplete="name" placeholder="Имя" required>
+          </div>
+          <div class="field">
+            <label for="m-contact">Удобный канал связи</label>
+            <input id="m-contact" name="contact" type="text" placeholder="Telegram, почта или телефон" required>
+          </div>
+          <div class="field">
+            <label for="m-about">Задача</label>
+            <input id="m-about" name="about" type="text" placeholder="Команда, событие для гостей или проект агентства">
+          </div>
+
+          <label class="hp" aria-hidden="true">Не заполняйте <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          <input type="hidden" data-track="utm_source" name="utm_source">
+          <input type="hidden" data-track="utm_campaign" name="utm_campaign">
+          <input type="hidden" data-track="id" name="ref_id">
+
+          <label class="consent"><input type="checkbox" name="consent" required> <span>Даю согласие на обработку персональных данных (<a href="privacy.html">политика</a>)</span></label>
+          <button class="btn" type="submit" data-cta="form:manager">Отправить заявку</button>
+          <span class="form-note form-error" role="alert"></span>
+        </div>
+        <div class="form-ok">
+          <h3>Заявка отправлена</h3>
+          <p class="mt-s">Спасибо! Менеджер свяжется с вами в течение рабочего дня. <span class="pill-note">(демо-режим прототипа)</span></p>
+        </div>
+      </form>
+    </div>
+  </dialog>
 
   <script src="assets/js/site.js"></script>
 </body>

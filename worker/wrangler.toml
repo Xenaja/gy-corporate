@@ -1,0 +1,12 @@
+name = "gy-lead-to-telegram"
+main = "lead-to-telegram.js"
+compatibility_date = "2026-08-01"
+
+# Кто имеет право слать заявки. Оставить строго свой домен: со звёздочкой
+# форму сможет дёргать любой сайт и засыпать чат мусором.
+[vars]
+ALLOW_ORIGIN = "https://xenaja.github.io"
+
+# BOT_TOKEN и CHAT_ID сюда не пишем — это секреты:
+#   npx wrangler secret put BOT_TOKEN
+#   npx wrangler secret put CHAT_ID
