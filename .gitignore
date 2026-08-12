@@ -1,0 +1,3 @@
+# Служебный кэш wrangler: в нём id и почта аккаунта Cloudflare.
+.wrangler/
+node_modules/

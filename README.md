@@ -141,14 +141,31 @@ photo_2026-03-15, photo_2026-06-21, photo_2_/photo_3_2026-08-12.
 в Telegram, а через воркер: токен бота нельзя класть в `site.js` — страница
 статическая, токен увидели бы все.
 
-Что сделать один раз, чтобы заявки пошли в чат:
+Воркер уже развёрнут: `https://gy-lead-to-telegram.xenonline77.workers.dev`
+(`cd worker && npx wrangler deploy` — пересобрать после правок).
+`TG_CHAT_ID` задан — заявки идут в личку.
 
-1. Создать бота у @BotFather, забрать токен.
-2. Написать боту, открыть `https://api.telegram.org/bot<ТОКЕН>/getUpdates`,
-   взять `message.chat.id` (для группы id будет с минусом).
-3. `cd worker && npx wrangler deploy`
-4. `npx wrangler secret put BOT_TOKEN`, затем `npx wrangler secret put CHAT_ID`
-5. Полученный адрес воркера вписать в `LEAD_ENDPOINT` в `assets/js/site.js`.
+Осталось задать `TG_TOKEN` (токен бота от @BotFather):
+
+```
+cd worker && npx wrangler secret put TG_TOKEN
+```
+
+— и вписать адрес воркера в `LEAD_ENDPOINT` в `assets/js/site.js`.
+
+Две грабли, обе уже стоили времени на «Кочевнике»: в личку бот пишет только
+после того, как получатель нажал ему `/start`; хвостовой пробел в имени
+переменной — воркер её не найдёт и будет молча отдавать `502`.
+
+Проверить, не открывая сайт:
+
+```
+curl -X POST https://gy-lead-to-telegram.xenonline77.workers.dev \
+  -H "Content-Type: application/json" \
+  -d '{"form":"manager","name":"Тест","contact":"@nick","consent":"on"}'
+```
+
+`{"ok":true}` — заявка ушла в Telegram. `502` — не задан или неверен токен.
 
 Пока `LEAD_ENDPOINT` пуст, форма ведёт себя как остальной прототип: показывает
 экран «Заявка отправлена» с пометкой «демо-режим» и ничего не отправляет.

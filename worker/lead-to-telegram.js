@@ -5,15 +5,21 @@
  * в site.js — он был бы виден всем и любой смог бы писать от имени бота.
  * Токен живёт в секретах воркера, страница знает только его адрес.
  *
+ * Переменные (Cloudflare → Worker → Settings → Variables and Secrets):
+ *   TG_TOKEN    — токен бота от @BotFather. Годится и уже работающий бот:
+ *                 у «Кочевника» тем же способом живёт @ansamble_leads_bot.
+ *   TG_CHAT_ID  — куда слать. Личка — свой id (@userinfobot подскажет),
+ *                 группа — её id с минусом.
+ *
  * Деплой (один раз):
- *   1. Создать бота у @BotFather, забрать токен.
- *   2. Узнать chat_id: написать боту, открыть
- *      https://api.telegram.org/bot<ТОКЕН>/getUpdates и взять message.chat.id.
- *      Для группы — добавить бота в неё и взять id группы (он с минусом).
- *   3. npx wrangler deploy  (wrangler.toml лежит рядом)
- *   4. npx wrangler secret put BOT_TOKEN
- *      npx wrangler secret put CHAT_ID
- *   5. Полученный URL вписать в LEAD_ENDPOINT в assets/js/site.js.
+ *   cd worker && npx wrangler deploy      # имя и main берутся из wrangler.toml
+ *   затем в Dashboard добавить TG_TOKEN и TG_CHAT_ID
+ *   и вписать адрес воркера в LEAD_ENDPOINT в assets/js/site.js.
+ *
+ * Две грабли, обе уже стоили времени на «Кочевнике»:
+ *   — в личку бот пишет только после того, как получатель нажал ему /start;
+ *   — хвостовой пробел в имени переменной = воркер её не найдёт и будет
+ *     молча отдавать 502.
  */
 
 const FIELDS = [
@@ -70,11 +76,11 @@ export default {
     if (meta.length) lines.push(`\n<i>${meta.join(" · ")}</i>`);
     if (clean(data.page)) lines.push(`<i>страница: ${esc(clean(data.page))}</i>`);
 
-    const tg = await fetch(`https://api.telegram.org/bot${env.BOT_TOKEN}/sendMessage`, {
+    const tg = await fetch(`https://api.telegram.org/bot${env.TG_TOKEN}/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        chat_id: env.CHAT_ID,
+        chat_id: env.TG_CHAT_ID,
         text: lines.join("\n"),
         parse_mode: "HTML",
         disable_web_page_preview: true,
