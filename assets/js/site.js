@@ -92,26 +92,7 @@
     pio.observe(pricing);
   }
 
-  /* ---- 5. Формы: заглушка отправки ------------------------------------ */
-  document.querySelectorAll("form[data-stub]").forEach(function (form) {
-    form.addEventListener("submit", function (ev) {
-      ev.preventDefault();
-      emit("form_submit", { form: form.getAttribute("data-stub") });
-      var ok = form.querySelector(".form-ok");
-      var fields = form.querySelector(".form-fields");
-      if (ok) {
-        ok.classList.add("show");
-        if (fields) fields.style.display = "none";
-        ok.setAttribute("tabindex", "-1");
-        ok.focus();
-      } else {
-        form.reset();
-        alert("Спасибо! Заявка отправлена (демо).");
-      }
-    });
-  });
-
-  /* ---- 6. Модальное окно заявки --------------------------------------- */
+  /* ---- 5. Модальное окно заявки --------------------------------------- */
   /* Нативный <dialog>: Esc, подложку и возврат фокуса делает браузер.
      Наше дело — открыть, закрыть по клику мимо окна и вернуть фокус кнопке. */
   var lastOpener = null;
@@ -138,7 +119,7 @@
     dlg.addEventListener("close", function () { if (lastOpener) lastOpener.focus(); });
   });
 
-  /* ---- 7. Заявка -> Telegram через воркер ------------------------------ */
+  /* ---- 6. Заявка -> Telegram через воркер ------------------------------ */
   /* Адрес прослойки (код — в worker/lead-to-telegram.js). Токен бота лежит
      в её секретах и на страницу не попадает, поэтому светить адрес не страшно:
      воркер принимает только POST и только с нашего домена.
@@ -189,7 +170,7 @@
     });
   });
 
-  /* ---- 8. Хедер меняет фон при скролле над тёмным героем -------------- */
+  /* ---- 7. Хедер меняет фон при скролле над тёмным героем -------------- */
   var header = document.querySelector(".site-header[data-hero-dark]");
   if (header) {
     var hero = document.querySelector(".hero");

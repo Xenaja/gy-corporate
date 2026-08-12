@@ -386,7 +386,7 @@
           <h2>Оставьте заявку — подберём формат под <em>вашу команду</em> и рассчитаем стоимость</h2>
         </div>
 
-        <form class="is-observe reveal" data-stub="hr-lead" novalidate>
+        <form class="is-observe reveal" data-lead="hr-lead" novalidate>
           <div class="form-fields">
             <div class="form-grid">
               <div class="field">
@@ -406,6 +406,7 @@
                 <input id="size" name="size" type="text" inputmode="numeric" placeholder="Примерно, человек">
               </div>
             </div>
+            <label class="hp" aria-hidden="true">Не заполняйте <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
             <input type="hidden" data-track="utm_source" name="utm_source">
             <input type="hidden" data-track="utm_campaign" name="utm_campaign">
             <input type="hidden" data-track="id" name="ref_id">
@@ -414,6 +415,7 @@
               <button class="btn" type="submit" data-cta="form:hr-lead">Отправить заявку</button>
               <span class="form-note">Свяжемся в течение рабочего дня.</span>
             </div>
+            <span class="form-note form-error" role="alert"></span>
           </div>
           <div class="form-ok">
             <h3>Заявка отправлена</h3>

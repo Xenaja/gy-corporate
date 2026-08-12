@@ -22,6 +22,17 @@
  *     молча отдавать 502.
  */
 
+// Человеческие названия форм: в телефоне важно с первой строки понять,
+// откуда заявка, а не расшифровывать «agency-magnet».
+const FORMS = {
+  "manager": "Связаться с менеджером",
+  "hr-lead": "Забота о команде — заявка",
+  "pr-lead": "Событие для гостей — заявка",
+  "agency-lead": "Агентство — запрос",
+  "pr-magnet": "Гайд «7 идей» — запрос",
+  "agency-magnet": "Каталог для агентств — запрос",
+};
+
 const FIELDS = [
   ["name", "Имя"],
   ["company", "Компания"],
@@ -67,7 +78,8 @@ export default {
     if (!contact) return reply({ ok: false, error: "contact" }, 400, cors);
     if (!data.consent) return reply({ ok: false, error: "consent" }, 400, cors);
 
-    const lines = [`<b>Заявка с лендинга</b> · ${esc(clean(data.form) || "форма")}`];
+    const form = clean(data.form);
+    const lines = [`<b>GY для бизнеса</b> · ${esc(FORMS[form] || form || "форма")}`];
     for (const [key, label] of FIELDS) {
       const v = clean(data[key]);
       if (v) lines.push(`${label}: <b>${esc(v)}</b>`);

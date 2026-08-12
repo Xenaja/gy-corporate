@@ -215,7 +215,7 @@
     <!-- ЛИД-МАГНИТ -->
     <section class="section section--tight on-cream">
       <div class="wrap">
-        <form class="leadmag is-observe reveal" data-stub="pr-magnet">
+        <form class="leadmag is-observe reveal" data-lead="pr-magnet">
           <div>
             <span class="eyebrow">Гайд · бесплатно</span>
             <h3 class="mt-s">7 идей йога-форматов, которые удивят гостей вашего события</h3>
@@ -226,10 +226,15 @@
               <input type="text" name="contact" placeholder="Почта или Telegram" aria-label="Почта или Telegram" required>
               <button class="btn" type="submit" data-cta="magnet:pr">Получить</button>
             </div>
+            <label class="hp" aria-hidden="true">Не заполняйте <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+            <input type="hidden" data-track="utm_source" name="utm_source">
+            <input type="hidden" data-track="utm_campaign" name="utm_campaign">
+            <input type="hidden" data-track="id" name="ref_id">
             <label class="consent"><input type="checkbox" name="consent" required> <span>Даю согласие на обработку персональных данных (<a href="privacy.html">политика</a>)</span></label>
-            <p class="form-note mt-s">Пришлём сразу, без звонков.</p>
+            <p class="form-note mt-s">Пришлём на указанный контакт, без звонков.</p>
+            <span class="form-note form-error" role="alert"></span>
           </div>
-          <div class="form-ok">Гайд отправлен — проверьте почту или Telegram. <span class="pill-note">(демо-режим прототипа)</span></div>
+          <div class="form-ok">Запрос принят — пришлём гайд на указанный контакт. <span class="pill-note">(демо-режим прототипа)</span></div>
         </form>
       </div>
     </section>
@@ -272,7 +277,7 @@
         <div class="form-head is-observe reveal">
           <h2>Расскажите про ваше событие — предложим формат и <em>рассчитаем стоимость</em></h2>
         </div>
-        <form class="is-observe reveal" data-stub="pr-lead" novalidate>
+        <form class="is-observe reveal" data-lead="pr-lead" novalidate>
           <div class="form-fields">
             <div class="form-grid">
               <div class="field">
@@ -296,6 +301,7 @@
                 <input id="about" name="about" type="text" placeholder="Дата, площадка, формат — если уже известно">
               </div>
             </div>
+            <label class="hp" aria-hidden="true">Не заполняйте <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
             <input type="hidden" data-track="utm_source" name="utm_source">
             <input type="hidden" data-track="utm_campaign" name="utm_campaign">
             <input type="hidden" data-track="id" name="ref_id">
@@ -304,6 +310,7 @@
               <button class="btn" type="submit" data-cta="form:pr-lead">Отправить заявку</button>
               <span class="form-note">Свяжемся в течение рабочего дня.</span>
             </div>
+            <span class="form-note form-error" role="alert"></span>
           </div>
           <div class="form-ok">
             <h3>Заявка отправлена</h3>
