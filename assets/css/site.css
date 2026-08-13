@@ -64,6 +64,17 @@ img { display: block; max-width: 100%; height: auto; }
 button { font: inherit; color: inherit; cursor: pointer; border: none; background: none; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 
+/* Скип-линк: не виден мышью, выезжает при табуляции первым элементом. */
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  font-family: var(--font-ui); font-weight: 800; font-size: var(--t-small);
+  text-transform: uppercase; letter-spacing: .06em;
+}
+.skip-link:focus {
+  left: 12px; top: 12px; padding: 12px 18px; border-radius: var(--radius-s);
+  background: var(--accent); color: var(--paper);
+}
+
 /* Ссылки заданы явно — браузерных синих и подчёркнутых на сайте нет. */
 a { color: var(--accent); text-decoration: none; transition: all .15s ease; }
 a:hover { color: var(--accent-d); }
@@ -95,6 +106,15 @@ h1 em, h2 em, h3 em, h1 .serif, h2 .serif, h3 .serif {
   text-transform: none;
   color: var(--accent);
   font-size: .92em;
+}
+/* Стандарт: акцент в 1–3 слова не разрывается переносом. Но только от 601px:
+   на узком экране строка короче самого акцента, и nowrap выдавливал заголовок
+   за экран (проверено на /pr — «у организаторов» уезжало на 36px). Ниже 600px
+   перенос внутри акцента — меньшее зло, чем обрезанный текст. */
+@media (min-width: 601px) {
+  h1 em, h2 em, h3 em, h1 .serif, h2 .serif, h3 .serif { white-space: nowrap; }
+  /* Прогоны длиннее трёх слов nowrap не получают — стандарт это оговаривает. */
+  .hero--hr h1 em, .h2--lg em { white-space: normal; }
 }
 /* В абзаце курсив — тем же цветом, что и текст: оранжевый там спорит с кнопкой. */
 p em, p .serif, li em { color: inherit; font-size: 1.02em; }
@@ -252,6 +272,19 @@ p .serif--accent { color: var(--accent); }
    При центре в кадр попадали вода и небо, а практика срезалась нижней
    кромкой. 70% поднимают кадр: люди целиком, вода — узкой полосой сверху. */
 .hero--home .hero__media img { object-position: center 70%; }
+
+/* На узком экране текстовый блок занимает всю ширину: радиальный подтон,
+   рассчитанный на левую треть, до надзаголовка не достаёт, и на светлом
+   кадре (/pr — стеклянная кровля) он падал до контраста ~2:1. Здесь кадр
+   всё равно не «открыт справа», так что вуаль усиливаем по всей ширине. */
+@media (max-width: 900px) {
+  .hero__media::before {
+    background: radial-gradient(150% 105% at 50% 45%, rgba(14,14,14,.74), transparent 82%);
+  }
+  .hero__media::after {
+    background: linear-gradient(180deg, rgba(14,14,14,.66) 0%, rgba(14,14,14,.5) 38%, rgba(14,14,14,.9) 100%);
+  }
+}
 .hero__top { position: relative; z-index: 3; padding-block: 30px; }
 .hero__top .header-row { min-height: 0; }
 .hero__inner {
