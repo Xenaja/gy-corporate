@@ -496,6 +496,9 @@ input:focus, select:focus, textarea:focus { border-color: var(--accent); outline
 .consent { display: flex; gap: 10px; align-items: flex-start; font-size: var(--t-small); color: var(--muted); margin-top: 16px; cursor: pointer; max-width: 54ch; }
 .consent input { width: 15px; height: 15px; padding: 0; margin-top: 3px; accent-color: var(--accent); flex: none; }
 .consent a { text-decoration: underline; }
+/* Согласий два: ознакомление с политикой и обработка ПД. Второе прижимаем
+   к первому, иначе 16px читаются как разрыв между разными блоками. */
+.consent + .consent { margin-top: 8px; }
 .on-ink .consent { color: var(--on-ink-3); }
 .form-ok { display: none; padding: 24px; border: 1px solid var(--accent); border-radius: var(--radius); background: rgba(242,107,31,.08); }
 .form-ok.show { display: block; }

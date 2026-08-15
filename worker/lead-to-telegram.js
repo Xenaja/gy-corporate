@@ -86,6 +86,11 @@ export default {
     const contact = clean(data.contact);
     if (!contact) return reply({ ok: false, error: "contact" }, 400, cors);
     if (!data.consent) return reply({ ok: false, error: "consent" }, 400, cors);
+    /* Галочек в форме две: ознакомление с политикой и согласие на обработку.
+       Жёстко требуем только вторую — по ней отправка и правомерна. Если из
+       формы пришло без первой, значит у человека открыта страница из кэша
+       со старой разметкой: заявку принимаем, но помечаем, чтобы в чате было
+       видно, что именно он подтвердил. */
 
     const form = clean(data.form);
     const lines = [`<b>GY для бизнеса</b> · ${esc(FORMS[form] || form || "форма")}`];
@@ -93,6 +98,10 @@ export default {
       const v = clean(data[key]);
       if (v) lines.push(`${label}: <b>${esc(v)}</b>`);
     }
+    lines.push(data.policy
+      ? "\n<i>согласия: политика + обработка ПД</i>"
+      : "\n<i>согласия: обработка ПД (политика не отмечена — страница из кэша)</i>");
+
     const meta = META.map(([k, l]) => (clean(data[k]) ? `${l}=${esc(clean(data[k]))}` : "")).filter(Boolean);
     if (meta.length) lines.push(`\n<i>${meta.join(" · ")}</i>`);
     if (clean(data.page)) lines.push(`<i>страница: ${esc(clean(data.page))}</i>`);
