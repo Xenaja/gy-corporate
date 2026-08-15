@@ -53,8 +53,17 @@ const LIMIT = 400; // на поле: заявка, а не письмо счас
 
 export default {
   async fetch(request, env) {
+    /* ALLOW_ORIGIN — список через запятую: у сайта их два (свой домен и старый
+       адрес Pages, который редиректит на него). Отдавать нужно ровно тот,
+       с которого пришёл запрос: браузер сверяет заголовок со своим Origin
+       посимвольно, и «почти совпадает» для него равно «запрещено».
+       Один адрес в переменной тоже работает — это частный случай списка. */
+    const origin = request.headers.get("Origin") || "";
+    const allowed = (env.ALLOW_ORIGIN || "").split(",").map((s) => s.trim()).filter(Boolean);
     const cors = {
-      "Access-Control-Allow-Origin": env.ALLOW_ORIGIN || "*",
+      "Access-Control-Allow-Origin": allowed.length
+        ? (allowed.includes(origin) ? origin : allowed[0])
+        : "*",
       "Access-Control-Allow-Methods": "POST, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type",
       "Vary": "Origin",

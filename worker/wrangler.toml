@@ -2,10 +2,12 @@ name = "gy-lead-to-telegram"
 main = "lead-to-telegram.js"
 compatibility_date = "2026-08-01"
 
-# Кто имеет право слать заявки. Оставить строго свой домен: со звёздочкой
+# Кто имеет право слать заявки. Оставить строго свои домены: со звёздочкой
 # форму сможет дёргать любой сайт и засыпать чат мусором.
+# Первый — боевой, второй — старый адрес Pages: он редиректит на боевой,
+# но если кто-то открыл сайт по старой ссылке до редиректа, заявка уйдёт.
 [vars]
-ALLOW_ORIGIN = "https://xenaja.github.io"
+ALLOW_ORIGIN = "https://corporate.generation.yoga,https://xenaja.github.io"
 
 # BOT_TOKEN и CHAT_ID сюда не пишем — это секреты:
 #   npx wrangler secret put BOT_TOKEN
