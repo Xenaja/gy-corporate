@@ -48,7 +48,15 @@
 
 /* --- reset ------------------------------------------------------------- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html {
+  scroll-behavior: smooth; -webkit-text-size-adjust: 100%;
+  /* Синяя вспышка при тапе — системная, поверх нашего оранжевого
+     она читается как сбой. Гасим и рисуем состояние сами. */
+  -webkit-tap-highlight-color: transparent;
+}
+/* manipulation убирает историческую задержку 300 мс перед кликом:
+   браузер больше не ждёт, не будет ли это двойной тап для зума. */
+a, button, label, summary, input, .btn { touch-action: manipulation; }
 body {
   font-family: var(--font-ui);
   font-size: var(--t-body);
@@ -565,7 +573,13 @@ input:focus, select:focus, textarea:focus { border-color: var(--accent); outline
 .deadline .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex: none; }
 
 /* --- футер --------------------------------------------------------------- */
-.site-footer { background: var(--ink); color: var(--on-ink-3); padding-block: clamp(40px, 6vw, 56px); }
+.site-footer {
+  background: var(--ink); color: var(--on-ink-3);
+  padding-block: clamp(40px, 6vw, 56px);
+  /* На айфонах с чёлкой нижняя полоса экрана занята индикатором:
+     без этого последняя строка подвала оказывается под ним. */
+  padding-bottom: calc(clamp(40px, 6vw, 56px) + env(safe-area-inset-bottom, 0px));
+}
 .site-footer .brand { color: var(--paper); }
 .site-footer .brand span { color: rgba(246,241,232,.7); }
 .footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
@@ -741,7 +755,8 @@ p.p-sm, .p-sm { font-size: var(--t-small); }
 @media (max-width: 900px) {
   .header-cta { display: none; }
   .aud-nav { display: none; }
-  .burger { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid var(--hairline); border-radius: 999px; }
+  /* 48px — минимальная зона касания; на 42 попадали не с первого раза. */
+  .burger { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: 1px solid var(--hairline); border-radius: 999px; }
   .site-header.on-ink .burger { border-color: var(--hairline-on-ink); }
   .hero { min-height: 88vh; }
   .hero h1 { max-width: 18ch; }
@@ -761,6 +776,14 @@ p.p-sm, .p-sm { font-size: var(--t-small); }
     padding: 12px var(--gutter) 20px; gap: 4px;
   }
   .site-header.on-ink .aud-nav.open { background: var(--ink); border-color: var(--hairline-on-ink); }
+  /* Подложка под открытым меню: показывает, что страница ждёт, и даёт
+     куда ткнуть, чтобы закрыть. Ниже шапки (z-index 60), выше контента. */
+  body.nav-open::after {
+    content: ""; position: fixed; inset: 0; z-index: 40;
+    background: rgba(14,14,14,.45);
+  }
+  /* Пока меню открыто, страница под ним не прокручивается. */
+  body.nav-open { overflow: hidden; }
   .aud-nav.open a:not(.btn) { padding: .85em 1em; font-size: .8125rem; letter-spacing: .07em; }
   .aud-nav.open .header-cta { display: inline-flex; margin: 8px 0 0; justify-content: center; }
 }

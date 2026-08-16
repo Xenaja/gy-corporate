@@ -42,9 +42,32 @@
   var burger = document.querySelector(".burger");
   var nav = document.querySelector(".aud-nav");
   if (burger && nav) {
-    burger.addEventListener("click", function () {
-      var open = nav.classList.toggle("open");
+    function setNav(open) {
+      nav.classList.toggle("open", open);
+      /* Класс на body тянет за собой две вещи из CSS: затемнение фона и
+         блокировку прокрутки. Без второй страница едет под открытым меню,
+         и человек теряет место, на котором читал. */
+      document.body.classList.toggle("nav-open", open);
       burger.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    burger.addEventListener("click", function () {
+      setNav(!nav.classList.contains("open"));
+    });
+
+    // Выйти из меню, не выбирая пункт: тап по затемнению или Esc.
+    document.addEventListener("click", function (ev) {
+      if (!nav.classList.contains("open")) return;
+      if (nav.contains(ev.target) || burger.contains(ev.target)) return;
+      setNav(false);
+    });
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape" && nav.classList.contains("open")) setNav(false);
+    });
+    // Переход по пункту меню — тоже закрытие: якорные ссылки ведут на ту же
+    // страницу, и меню осталось бы висеть поверх нужного блока.
+    nav.addEventListener("click", function (ev) {
+      if (ev.target.closest("a")) setNav(false);
     });
   }
 
