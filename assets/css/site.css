@@ -595,6 +595,12 @@ input:focus, select:focus, textarea:focus { border-color: var(--accent); outline
 }
 .footer-bottom a { color: rgba(246,241,232,.8); }
 .footer-bottom a:hover { color: var(--accent); }
+/* Подпись автора — отдельной строкой под копирайтом, а не третьим элементом
+   в ряду: в space-between она растаскивала строку, а на мобиле переносилась
+   в случайном месте. */
+.footer-author { margin-top: 14px; font-size: var(--t-small); color: var(--on-ink-3); }
+.footer-author a { color: rgba(246,241,232,.8); text-decoration: underline; text-underline-offset: 3px; }
+.footer-author a:hover { color: var(--accent); }
 /* Служебная страница: футер без верхней линии и отступа — над ним ничего нет. */
 .footer-bottom--bare { margin-top: 0; padding-top: 0; border-top: none; }
 
