@@ -51,6 +51,9 @@ const META = [
 
 const LIMIT = 400; // на поле: заявка, а не письмо счастья
 
+// Годный контакт: телефон, @ник в телеграме, ссылка t.me или почта.
+const CONTACT = /^(?:\+?\d[\d\s\(\)\.\-]{7,17}|@[A-Za-z0-9_]{4,32}|(?:https?:\/\/)?t\.me\/[A-Za-z0-9_]{4,32}|[^@\s]+@[^@\s\.]+\.[A-Za-z]{2,})$/;
+
 export default {
   async fetch(request, env) {
     /* ALLOW_ORIGIN — список через запятую: у сайта их два (свой домен и старый
@@ -83,8 +86,12 @@ export default {
     // Отвечаем «ок», чтобы спамер не понял, что его отсеяли.
     if (data.website) return reply({ ok: true }, 200, cors);
 
+    /* Тот же шаблон, что в pattern у поля на странице. Проверка на клиенте —
+       удобство, а не защита: воркер открыт всему интернету, и без серверной
+       проверки в чат прилетит что угодно. Расходиться шаблонам нельзя. */
     const contact = clean(data.contact);
     if (!contact) return reply({ ok: false, error: "contact" }, 400, cors);
+    if (!CONTACT.test(contact)) return reply({ ok: false, error: "contact_format" }, 400, cors);
     if (!data.consent) return reply({ ok: false, error: "consent" }, 400, cors);
     /* Галочек в форме две: ознакомление с политикой и согласие на обработку.
        Жёстко требуем только вторую — по ней отправка и правомерна. Если из

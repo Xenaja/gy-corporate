@@ -202,11 +202,12 @@
 
           <div class="field">
             <label for="m-name">Как вас зовут</label>
-            <input id="m-name" name="name" type="text" autocomplete="name" placeholder="Имя" required>
+            <input id="m-name" name="name" type="text" autocomplete="name" placeholder="Имя" minlength="2" pattern=".{2,}" data-error="Напишите, как к вам обращаться" required>
           </div>
           <div class="field">
             <label for="m-contact">Удобный канал связи</label>
-            <input id="m-contact" name="contact" type="text" placeholder="Telegram, почта или телефон" required>
+            <input id="m-contact" name="contact" type="text" placeholder="Telegram, почта или телефон"
+                   pattern="(?:\+?\d[\d\s\(\)\.\-]{7,17}|@[A-Za-z0-9_]{4,32}|(?:https?:\/\/)?t\.me\/[A-Za-z0-9_]{4,32}|[^@\s]+@[^@\s\.]+\.[A-Za-z]{2,})" data-error="Оставьте телеграм (@ник), почту или телефон — иначе нам некуда ответить" required>
           </div>
           <div class="field">
             <label for="m-about">Задача</label>

@@ -238,7 +238,8 @@
           </div>
           <div class="form-fields">
             <div class="mini-form">
-              <input type="text" name="contact" placeholder="Почта или Telegram" aria-label="Почта или Telegram" required>
+              <input type="text" name="contact" placeholder="Почта или Telegram" aria-label="Почта или Telegram"
+                     pattern="(?:\+?\d[\d\s\(\)\.\-]{7,17}|@[A-Za-z0-9_]{4,32}|(?:https?:\/\/)?t\.me\/[A-Za-z0-9_]{4,32}|[^@\s]+@[^@\s\.]+\.[A-Za-z]{2,})" data-error="Оставьте телеграм (@ник), почту или телефон — иначе нам некуда ответить" required>
               <button class="btn" type="submit" data-cta="magnet:pr">Получить</button>
             </div>
             <label class="hp" aria-hidden="true">Не заполняйте <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
@@ -298,19 +299,20 @@
             <div class="form-grid">
               <div class="field">
                 <label for="name">Как вас зовут</label>
-                <input id="name" name="name" type="text" autocomplete="name" placeholder="Имя" required>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="Имя" minlength="2" pattern=".{2,}" data-error="Напишите, как к вам обращаться" required>
               </div>
               <div class="field">
                 <label for="company">Компания</label>
-                <input id="company" name="company" type="text" autocomplete="organization" placeholder="Название" required>
+                <input id="company" name="company" type="text" autocomplete="organization" placeholder="Название" minlength="2" pattern=".{2,}" data-error="Название компании — хотя бы пара букв" required>
               </div>
               <div class="field">
                 <label for="contact">Удобный канал связи</label>
-                <input id="contact" name="contact" type="text" placeholder="Telegram, почта или телефон" required>
+                <input id="contact" name="contact" type="text" placeholder="Telegram, почта или телефон"
+                       pattern="(?:\+?\d[\d\s\(\)\.\-]{7,17}|@[A-Za-z0-9_]{4,32}|(?:https?:\/\/)?t\.me\/[A-Za-z0-9_]{4,32}|[^@\s]+@[^@\s\.]+\.[A-Za-z]{2,})" data-error="Оставьте телеграм (@ник), почту или телефон — иначе нам некуда ответить" required>
               </div>
               <div class="field">
                 <label for="guests">Сколько гостей</label>
-                <input id="guests" name="guests" type="text" inputmode="numeric" placeholder="Примерно, человек">
+                <input id="guests" name="guests" type="text" inputmode="numeric" pattern="[0-9]{1,5}" data-error="Только цифры, примерное число участников" placeholder="Примерно, человек">
               </div>
               <div class="field full">
                 <label for="about">Про событие</label>

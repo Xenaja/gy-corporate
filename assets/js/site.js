@@ -143,9 +143,23 @@
       if (okBox) { okBox.classList.add("show"); okBox.setAttribute("tabindex", "-1"); okBox.focus(); }
     }
 
+    /* Браузерное «Введите данные в требуемом формате» не объясняет ничего.
+       Подменяем текст на человеческий из data-error и сбрасываем его при
+       вводе — иначе поле остаётся «невалидным» после исправления. */
+    form.querySelectorAll("[data-error]").forEach(function (el) {
+      el.addEventListener("invalid", function () {
+        el.setCustomValidity(el.getAttribute("data-error"));
+      });
+      el.addEventListener("input", function () { el.setCustomValidity(""); });
+    });
+
     form.addEventListener("submit", function (ev) {
       ev.preventDefault();
       if (errBox) errBox.textContent = "";
+      /* Сбрасываем прошлые сообщения перед проверкой: поле с непустым
+         customValidity считается невалидным навсегда, даже когда в нём уже
+         всё исправлено. Нужный текст поставит обработчик invalid ниже. */
+      form.querySelectorAll("[data-error]").forEach(function (el) { el.setCustomValidity(""); });
       if (!form.checkValidity()) { form.reportValidity(); return; }
 
       var payload = { form: form.getAttribute("data-lead"), page: location.pathname };
